@@ -9,7 +9,7 @@ module.exports = {
     // entry: './src/client/index.jsx',
     
     // adding react-hot-loader to entry since I initially had to rebundle my app when I made a filename change. This might resolve the issue.
-    entry: './src/client/index.js',
+    entry: './src/index.js',
 
     output: {
         path: path.join(__dirname, '/dist'),
@@ -19,7 +19,7 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/client/index.html'
+            template: './src/index.html'
         })
     ],
 
