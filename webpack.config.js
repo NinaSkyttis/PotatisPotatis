@@ -1,12 +1,14 @@
 // const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// in order to use ECMAScript, use import statements instead of require. 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
+    // entry: './src/client/index.jsx',
+    
+    // adding react-hot-loader to entry since I initially had to rebundle my app when I made a filename change. This might resolve the issue.
     entry: './src/client/index.js',
 
     output: {

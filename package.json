@@ -2,7 +2,7 @@
   "name": "solo-project",
   "version": "1.0.0",
   "main": "index.js",
-  "description": "below I could also use start: node src/server/server.js which would give me more control over my server",
+  "description": "",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production --config webpack.config.js"
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "react": "^18.2.0",
@@ -31,6 +32,5 @@
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
-  },
-  "description": ""
+  }
 }
