@@ -28,7 +28,7 @@ module.exports = {
             '/api': {
                 target: 'http://localhost:3000',
                 secure: false,
-            }
+            },
             // this was my initial setup. Changing /** to '/api'. Might change back later. */
             // '/**': {
             //     target: 'http://localhost:3000/',
@@ -50,7 +50,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/i,
+                test: /\.(s(a|c)ss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {

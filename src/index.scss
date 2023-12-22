@@ -1,0 +1,33 @@
+$black: #000;
+$white: #FCFAF6;
+$peach-fuzz: #F3CFB4;
+$peach-fuzz-medium: #E2AE89;
+$peach-fuzz-dark: #B35A41;
+$background: #F5F4F6;
+$christmas-red: #D93000;
+$background-gradient: conic-gradient(from 221deg at 50% 50%, rgba(226, 174, 137, 0.68) 68.888418674469deg, rgba(243, 207, 180, 0.44) 202.94589042663574deg, rgba(179, 90, 65, 0.29) 359.83569860458374deg);
+
+
+body {
+  color: $black;
+  background: $background;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+button {
+  padding: 15px 20px;
+  background: $peach-fuzz;
+  border: none;
+  border-radius: 6px;
+  width: 200px;
+}
+
