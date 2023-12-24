@@ -25,6 +25,17 @@ const potatisReducer = (state = initialState, action) => {
         lastChapterId: state.lastChapterId + 1,
         totalChapters: state.totalChapters + 1,
       };
+    case types.FETCH_DATA_SUCCESS:
+      return {
+        ...state,
+        data: action.payload,
+        error: null,
+      };
+    case types.FETCH_DATA_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
