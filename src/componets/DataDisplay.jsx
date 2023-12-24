@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchData} from '../actions/actions';
 
