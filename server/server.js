@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // server.js
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,6 +23,7 @@ if (environment === 'production') {
 }
 
 const cors = require('cors');
+const collectionsController = require('./controllers/CollectionsController');
 app.use(cors());
 
 // Middleware
@@ -37,6 +39,11 @@ app.get('/api/data', async (req, res) => {
     console.error('Error executing query', error);
     res.status(500).json({error: 'Internal Server Error'});
   }
+});
+
+app.post('/api/addChapter', collectionsController.addCollection, (req, res) => {
+  res.status(200).json(result.rows);
+  // handle error here
 });
 
 
