@@ -5,19 +5,27 @@ import * as types from '../constants/actionTypes';
 
 
 // trying to add functionality to add and save collections in elephantSQL
-export const addChapter = () => async (dispatch, title) => {
+export const addChapter = (title) => async (dispatch) => {
+  console.log('this is the title', title)
+  console.log('this is the dispatch', dispatch)
   try {
-    const response = await fetch('/api/addChapter', {
+    await fetch('/api/addChapter', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({title}),
     });
-    const data = await response;
+
+    // const data = await response.json();
+
+    const payload = {
+      title,
+    };
+
     dispatch({
       type: types.ADD_CHAPTER,
-      payload: title,
+      payload,
     });
   } catch (error) {
     dispatch({

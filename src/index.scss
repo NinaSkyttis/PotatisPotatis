@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&display=swap');
+
 $black: #000;
 $white: #FCFAF6;
 $peach-fuzz: #F3CFB4;
@@ -6,7 +8,8 @@ $peach-fuzz-dark: #B35A41;
 $background: #F5F4F6;
 $christmas-red: #D93000;
 $background-gradient: conic-gradient(from 221deg at 50% 50%, rgba(226, 174, 137, 0.68) 68.888418674469deg, rgba(243, 207, 180, 0.44) 202.94589042663574deg, rgba(179, 90, 65, 0.29) 359.83569860458374deg);
-
+$primary-font: 'Josefin Sans', sans-serif;
+$primary-weight: 300;
 
 body {
   color: $black;
@@ -14,8 +17,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 200px;
-
+  width: 100%;
+  font-family: $primary-font;
+  font-weight: $primary-weight;
+  height: 100vh;
+  margin: 0px;
 }
 
 form {
@@ -23,6 +29,7 @@ form {
   flex-direction: column;
   width: 200px;
 }
+
 button {
   padding: 15px 20px;
   background: $peach-fuzz;

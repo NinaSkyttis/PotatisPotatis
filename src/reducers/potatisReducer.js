@@ -12,13 +12,14 @@ const initialState = {
 const potatisReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_CHAPTER:
+      console.log('action.payload', action.payload);
       return {
         ...state,
         chapterList: [
           ...state.chapterList,
           {
             id: state.lastChapterId + 1,
-            title: action.payload,
+            title: action.payload.title,
             recipes: 0,
           },
         ],

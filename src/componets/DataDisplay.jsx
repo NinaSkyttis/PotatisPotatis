@@ -26,7 +26,7 @@ const DataDisplay = (props) => {
       ) : (
         <ul>
           {data && data.map((item) => (
-            <li key={item.id}>
+            <li key={item._id}>
               <p>{item.title}</p>
               {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />}
             </li>
