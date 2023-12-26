@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "description": "Solo-project mid-portion",
+  "proxy": "http://localhost:3000",
   "scripts": {
-    "server": "node ./server/server.js",
+    "server": "nodemon ./server/server.js",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production --config webpack.config.js"
   },
