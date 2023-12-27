@@ -12,8 +12,7 @@ const pool = new Pool({
 
 // getting all
 router.get('/', ChaptersController.displayAllChapters, (req, res) => {
-  console.log('this is hrouterening now')
-  res.status(200).json(res.locals.result.rows);
+  res.status(200).json(res.locals.result);
 });
 // getting one
 router.get('/:id', (req, res) => {

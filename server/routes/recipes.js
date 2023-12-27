@@ -8,8 +8,6 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-// module.exports = app;
-
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM public.recipe');

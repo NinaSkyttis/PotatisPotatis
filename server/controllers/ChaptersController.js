@@ -22,8 +22,7 @@ ChaptersController.addChapter = async (req, res, next) => {
 
 ChaptersController.displayAllChapters = async (req, res, next) => {
   const result = await pool.query('SELECT * FROM public.collections');
-  console.log('here we are in chapterscontroller');
-  res.locals.result = result;
+  res.locals.result = result.rows;
   return next();
 };
 

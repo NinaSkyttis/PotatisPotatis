@@ -14,7 +14,6 @@ export const addChapter = (title) => async (dispatch) => {
       },
       body: JSON.stringify({title}),
     });
-    console.log('im here')
 
     // const data = await response.json();
 

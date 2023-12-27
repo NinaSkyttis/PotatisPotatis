@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+// eslint-disable-next-line no-unused-vars
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
@@ -18,8 +19,8 @@ const CookbookDisplay = (props) => {
       ) : (
         <ul>
           {chapterList && chapterList.map((item) => (
-            <li key={item._id}>
-              <h2>{item.title}</h2>
+            <li key={item.chapter._id}>
+              <h2>{item.chapter.title}</h2>
               {/* {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />} */}
             </li>
           ))}

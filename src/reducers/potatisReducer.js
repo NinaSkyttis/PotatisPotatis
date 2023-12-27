@@ -43,6 +43,17 @@ const potatisReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
+    case types.FETCH_COOKBOOK_SUCCESS:
+      return {
+        ...state,
+        chapterList: [
+          ...state.chapterList,
+          ...action.payload.map((chapter) => ({
+            chapter,
+            error: null,
+          })),
+        ],
+      };
     default:
       return state;
   }
