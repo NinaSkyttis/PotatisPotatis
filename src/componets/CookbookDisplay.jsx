@@ -18,12 +18,13 @@ const CookbookDisplay = (props) => {
         <p>Error: {error}</p>
       ) : (
         <ul>
-          {chapterList && chapterList.map((item) => (
-            <li key={item.chapter._id}>
-              <h2>{item.chapter.title}</h2>
-              {/* {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />} */}
-            </li>
-          ))}
+          {chapterList &&
+              chapterList.map((item) => (
+                <li key={item.chapter?._id}>
+                  <h2>{item.chapter?.title}</h2>
+                </li>
+              ))}
+
         </ul>
       )}
     </div>

@@ -1,10 +1,5 @@
 import * as types from '../constants/actionTypes';
-// import {useDispatch} from 'react-redux';
 
-// const dispatch = useDispatch();
-
-
-// trying to add functionality to add and save chapters in elephantSQL
 export const addChapter = (title) => async (dispatch) => {
   try {
     await fetch('/api/chapters', {
@@ -12,10 +7,8 @@ export const addChapter = (title) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({title}),
+      body: JSON.stringify({ title }),
     });
-
-    // const data = await response.json();
 
     const payload = {
       title,
@@ -27,11 +20,13 @@ export const addChapter = (title) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: types.ADD_CHAPTER,
+      type: types.ADD_CHAPTER_FAILURE,
       payload: error.message,
     });
   }
 };
+
+
 
 export const fetchRecipes = () => async (dispatch) => {
   try {

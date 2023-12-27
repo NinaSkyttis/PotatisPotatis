@@ -13,7 +13,6 @@ const initialState = {
 const potatisReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_CHAPTER:
-      console.log('action.payload', action.payload);
       return {
         ...state,
         chapterList: [
@@ -46,13 +45,10 @@ const potatisReducer = (state = initialState, action) => {
     case types.FETCH_COOKBOOK_SUCCESS:
       return {
         ...state,
-        chapterList: [
-          ...state.chapterList,
-          ...action.payload.map((chapter) => ({
-            chapter,
-            error: null,
-          })),
-        ],
+        chapterList: action.payload.map((chapter) => ({
+          chapter,
+          error: null,
+        })),
       };
     default:
       return state;
