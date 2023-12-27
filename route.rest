@@ -1,11 +1,11 @@
-GET http://localhost:3000/chapters
+GET http://localhost:3000/api/chapters
 
 ###
 
-GET http://localhost:3000/chapters/13
+GET http://localhost:3000/api/chapters/13
 
 ###
 
-PATCH http://localhost:3000/chapters/18
+PATCH http://localhost:3000/api/chapters/18
 
 ###

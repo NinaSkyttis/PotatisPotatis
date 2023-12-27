@@ -14,7 +14,7 @@ const pool = new Pool({
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/api/data', async (req, res) => {
+app.get('/api/recipes', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM public.recipe');
     console.log(result.rows, '<--- this is the result');

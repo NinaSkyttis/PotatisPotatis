@@ -27,17 +27,11 @@ module.exports = {
 
   devServer: {
     proxy: {
-      '/**': {
+      '/api': {
         target: 'http://localhost:3000/',
         secure: false,
         timeout: 60000,
       },
-      // this was my initial setup.
-      // Changing /** to '/api'. Might change back later. */
-      // '/**': {
-      //     target: 'http://localhost:3000/',
-      //     secure: false,
-      // }
     },
   },
 

@@ -35,17 +35,33 @@ export const addChapter = (title) => async (dispatch) => {
   }
 };
 
-export const fetchData = () => async (dispatch) => {
+export const fetchRecipes = () => async (dispatch) => {
   try {
-    const response = await fetch('/api/data');
-    const data = await response.json();
+    const response = await fetch('/api/recipes');
+    const recipes = await response.json();
     dispatch({
-      type: types.FETCH_DATA_SUCCESS,
-      payload: data,
+      type: types.FETCH_RECIPES_SUCCESS,
+      payload: recipes,
     });
   } catch (error) {
     dispatch({
-      type: types.FETCH_DATA_FAILURE,
+      type: types.FETCH_RECIPES_FAILURE,
+      payload: error.message,
+    });
+  }
+};
+
+export const fetchCookbook = () => async (dispatch) => {
+  try {
+    const response = await fetch('/api/recipes');
+    const recipes = await response.json();
+    dispatch({
+      type: types.FETCH_RECIPES_SUCCESS,
+      payload: recipes,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.FETCH_RECIPES_FAILURE,
       payload: error.message,
     });
   }

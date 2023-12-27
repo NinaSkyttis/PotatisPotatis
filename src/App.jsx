@@ -1,6 +1,7 @@
 import React from 'react';
 import ChapterCreator from './componets/ChapterCreator';
-import DataDisplay from './componets/DataDisplay';
+import RecipeDisplay from './componets/RecipeDisplay';
+import CookbookDisplay from './componets/CookbookDisplay';
 import Navbar from './componets/Navbar';
 import Footer from './componets/Footer';
 // import {store} from '../store.js';
@@ -11,7 +12,8 @@ const App = () => {
     <div>
       <Navbar/>
       <ChapterCreator/>
-      <DataDisplay/>
+      <CookbookDisplay/>
+      <RecipeDisplay/>
       <Footer/>
     </div>
   );

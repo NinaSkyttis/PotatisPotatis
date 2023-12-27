@@ -5,7 +5,7 @@ import {fetchCookbook} from '../actions/actions';
 
 const CookbookDisplay = (props) => {
   const dispatch = useDispatch();
-  const {data, error} = useSelector((state) => state.potatis);
+  const {chapterList, error} = useSelector((state) => state.potatis);
 
   useEffect(() => {
     dispatch(fetchCookbook());
@@ -17,7 +17,7 @@ const CookbookDisplay = (props) => {
         <p>Error: {error}</p>
       ) : (
         <ul>
-          {data && data.map((item) => (
+          {chapterList && chapterList.map((item) => (
             <li key={item._id}>
               <p>{item.title}</p>
               {/* {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />} */}

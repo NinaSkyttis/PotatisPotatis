@@ -5,6 +5,7 @@ const initialState = {
   totalCollections: 0,
   totalChapters: 0,
   chapterList: [],
+  recipeList: [],
   lastChapterId: 0,
   newChapter: '',
 };
@@ -26,13 +27,18 @@ const potatisReducer = (state = initialState, action) => {
         lastChapterId: state.lastChapterId + 1,
         totalChapters: state.totalChapters + 1,
       };
-    case types.FETCH_DATA_SUCCESS:
+    case types.FETCH_RECIPES_SUCCESS:
       return {
         ...state,
-        data: action.payload,
-        error: null,
+        recipeList: [
+          ...state.recipeList,
+          ...action.payload.map((recipe) => ({
+            recipe,
+            error: null,
+          })),
+        ],
       };
-    case types.FETCH_DATA_FAILURE:
+    case types.FETCH_RECIPES_FAILURE:
       return {
         ...state,
         error: action.payload,
