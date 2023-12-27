@@ -12,6 +12,7 @@ const pool = new Pool({
 
 // getting all
 router.get('/', ChaptersController.displayAllChapters, (req, res) => {
+  console.log(res.locals.result, 'in getreq for chapters')
   res.status(200).json(res.locals.result);
 });
 // getting one

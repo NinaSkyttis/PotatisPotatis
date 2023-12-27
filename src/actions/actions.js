@@ -7,7 +7,7 @@ export const addChapter = (title) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title }),
+      body: JSON.stringify({title}),
     });
 
     const payload = {
@@ -25,7 +25,6 @@ export const addChapter = (title) => async (dispatch) => {
     });
   }
 };
-
 
 
 export const fetchRecipes = () => async (dispatch) => {
@@ -48,6 +47,7 @@ export const fetchCookbook = () => async (dispatch) => {
   try {
     const response = await fetch('/api/chapters');
     const chapters = await response.json();
+    console.log(chapters, 'chapters in fetchCookbook')
     dispatch({
       type: types.FETCH_COOKBOOK_SUCCESS,
       payload: chapters,

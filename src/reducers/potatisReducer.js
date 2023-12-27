@@ -46,8 +46,8 @@ const potatisReducer = (state = initialState, action) => {
       return {
         ...state,
         chapterList: action.payload.map((chapter) => ({
-          chapter,
-          error: null,
+          _id: chapter._id,
+          title: chapter.title,
         })),
       };
     default:

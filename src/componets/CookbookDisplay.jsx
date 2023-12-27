@@ -20,8 +20,8 @@ const CookbookDisplay = (props) => {
         <ul>
           {chapterList &&
               chapterList.map((item) => (
-                <li key={item.chapter?._id}>
-                  <h2>{item.chapter?.title}</h2>
+                <li key={item._id}>
+                  <h2>{item.title}</h2>
                 </li>
               ))}
 
