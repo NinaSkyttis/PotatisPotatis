@@ -1,39 +1,46 @@
 /* eslint-disable max-len */
 const express = require('express');
-const app = express();
-const collectionsController = require('../controllers/CollectionsController');
-// const { Pool } = require('pg');
+// eslint-disable-next-line new-cap
+const router = express.Router();
+const ChaptersController = require('../controllers/ChaptersController');
+const { Pool } = require('pg');
 
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-// });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
-
-module.exports = app;
 
 // getting all
-app.get('/', collectionsController.displayAllCollections, (req, res) => {
-  // console.log('this is happening now')
+router.get('/', ChaptersController.displayAllChapters, (req, res) => {
+  console.log('this is hrouterening now')
   res.status(200).json(res.locals.result.rows);
 });
 // getting one
-app.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 //   const id = req.params.id;
   res.send(req.params.id);
 });
 
 // creating one
-app.post('/addChapter', collectionsController.addCollection, (req, res) => {
-  res.status(200).json(res.locals.returnTitle);
+router.post('/', ChaptersController.addChapter, (req, res) => {
+  res.status(200).json(res.locals.returnChapter);
 });
+
+// router.post('/api/chapters', chaptersController.addChapter, (req, res) => {
+//   res.status(200).json(result.rows);
+//   // handle error here
+// });
 
 
 // updating one
-app.patch('/:id', (req, res) => {
- res.send(req.params.id)
+router.patch('/:id', (req, res) => {
+  res.send(req.params.id);
 });
 
 // deleting one
-app.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
 });
+
+
+module.exports = router;

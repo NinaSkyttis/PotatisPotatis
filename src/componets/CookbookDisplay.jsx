@@ -19,7 +19,7 @@ const CookbookDisplay = (props) => {
         <ul>
           {chapterList && chapterList.map((item) => (
             <li key={item._id}>
-              <p>{item.title}</p>
+              <h2>{item.title}</h2>
               {/* {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />} */}
             </li>
           ))}

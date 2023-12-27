@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchData} from '../actions/actions';
+import {fetchRecipes} from '../actions/actions';
 import '../scss/_navbar_footer.scss';
 import logoblack from '../img/logoblack.png';
 

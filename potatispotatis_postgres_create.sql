@@ -21,19 +21,19 @@ CREATE TABLE public.recipe (
   OIDS=FALSE
 );
 
-CREATE TABLE public.recipes_in_collections (
+CREATE TABLE public.recipes_in_chapters (
 	"_id" serial NOT NULL,
 	"recipe_id" bigint,
 	"collection_id" bigint,
-	CONSTRAINT "recipes_in_collections_pk" PRIMARY KEY ("_id")
+	CONSTRAINT "recipes_in_chapters_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
 
-CREATE TABLE public.collections (
+CREATE TABLE public.chapters (
 	"_id" serial NOT NULL,
 	"title" varchar,
-	CONSTRAINT "collections_pk" PRIMARY KEY ("_id")
+	CONSTRAINT "chapters_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
@@ -46,6 +46,6 @@ INSERT INTO public.recipe ("title", "url", "collection_id") VALUES ('Easy Candy 
 
 
 
- INSERT INTO public.collections VALUES ('Desserts');
- INSERT INTO public.collections VALUES ('Soups');
+ INSERT INTO public.chapters VALUES ('Desserts');
+ INSERT INTO public.chapters VALUES ('Soups');
  

@@ -4,31 +4,40 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 require('dotenv').config();
-const collectionsController = require('./controllers/CollectionsController');
+// const chaptersController = require('./controllers/ChaptersController');
 
 const {Pool} = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/api/recipes', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM public.recipe');
-    console.log(result.rows, '<--- this is the result');
-    res.status(200).json(result.rows);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({error: 'Internal Server Error'});
-  }
-});
+// Importing routes
+const chaptersRouter = require('./routes/chapters');
+const recipesRouter = require('./routes/recipes');
 
-app.post('/api/addChapter', collectionsController.addCollection, (req, res) => {
-  res.status(200).json(result.rows);
-  // handle error here
-});
+app.use('/api/chapters', chaptersRouter);
+app.use('/api/recipes', recipesRouter);
+
+
+// app.get('/api/recipes', async (req, res) => {
+//   try {
+//     const result = await pool.query('SELECT * FROM public.recipe');
+//     console.log(result.rows, '<--- this is the result');
+//     res.status(200).json(result.rows);
+//   } catch (error) {
+//     console.error('Error executing query', error);
+//     res.status(500).json({error: 'Internal Server Error'});
+//   }
+// });
+
+// app.post('/api/chapters', chaptersController.addChapter, (req, res) => {
+//   res.status(200).json(result.rows);
+//   // handle error here
+// });
 
 // Start the server
 app.listen(PORT, () => {

@@ -16,10 +16,11 @@ const RecipeDisplay = (props) => {
     dispatch(fetchRecipes());
   }, [dispatch]);
 
+  // eslint-disable-next-line no-unused-vars
   const getImage = (url) => {
     const imgTags = document.getElementsByTagName('img');
     return imgTags[0];
-  }
+  };
 
   return (
     <div>

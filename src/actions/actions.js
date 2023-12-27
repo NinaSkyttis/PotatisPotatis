@@ -4,18 +4,17 @@ import * as types from '../constants/actionTypes';
 // const dispatch = useDispatch();
 
 
-// trying to add functionality to add and save collections in elephantSQL
+// trying to add functionality to add and save chapters in elephantSQL
 export const addChapter = (title) => async (dispatch) => {
-  console.log('this is the title', title)
-  console.log('this is the dispatch', dispatch)
   try {
-    await fetch('/api/addChapter', {
+    await fetch('/api/chapters', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({title}),
     });
+    console.log('im here')
 
     // const data = await response.json();
 
@@ -53,15 +52,15 @@ export const fetchRecipes = () => async (dispatch) => {
 
 export const fetchCookbook = () => async (dispatch) => {
   try {
-    const response = await fetch('/api/recipes');
-    const recipes = await response.json();
+    const response = await fetch('/api/chapters');
+    const chapters = await response.json();
     dispatch({
-      type: types.FETCH_RECIPES_SUCCESS,
-      payload: recipes,
+      type: types.FETCH_COOKBOOK_SUCCESS,
+      payload: chapters,
     });
   } catch (error) {
     dispatch({
-      type: types.FETCH_RECIPES_FAILURE,
+      type: types.FETCH_COOKBOOK_FAILURE,
       payload: error.message,
     });
   }
