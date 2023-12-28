@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Inspiration from './pages/Inspiration';
 import WelcomePage from './pages/WelcomePage';
@@ -10,29 +10,34 @@ import Footer from './componets/Footer';
 // import {store} from '../store.js';
 
 
-const App = () => {
+const Navigation = () => {
+  useNavigate();
+
+  const isLoginSignupPage = () => {
+    return location.pathname === '/login-signup';
+  };
+
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/homepage" element={<HomePage/>} />
-          <Route path="/inspiration" element={<Inspiration/>} />
-          <Route path="/welcome-page" element={<WelcomePage />} />
-          <Route path="/login-signup" element={<LoginSignupPage />} />
-        </Routes>
-        <Footer/>
-      </Router>
+      {!isLoginSignupPage() && <Navbar/>}
+      {/* <Navbar /> */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/homepage" element={<HomePage/>} />
+        <Route path="/inspiration" element={<Inspiration/>} />
+        <Route path="/welcome-page" element={<WelcomePage />} />
+        <Route path="/login-signup" element={<LoginSignupPage />} />
+      </Routes>
+      {!isLoginSignupPage() && <Footer />}
     </div>
+  );
+};
 
-  // <div>
-  //   <Navbar/>
-  //   <ChapterCreator/>
-  //   <CookbookDisplay/>
-  //   <RecipeDisplay/>
-  //   <Footer/>
-  // </div>
+const App = () => {
+  return (
+    <Router>
+      <Navigation/>
+    </Router>
   );
 };
 
