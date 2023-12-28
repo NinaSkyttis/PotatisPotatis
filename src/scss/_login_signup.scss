@@ -1,0 +1,82 @@
+@import '../index.scss';
+
+body {
+ background: $background-gradient;
+}
+
+.loginSignupStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  font-family: $primary-font;
+}
+
+.backgroundStyle {
+  position: absolute;
+  background: $peach-fuzz-medium;
+  width: 800px;
+  height: 580px;
+  top: 170px;
+  z-index: 1;
+  left: 250px;
+  display: flex;
+  align-items: flex-start;
+  padding: 15px 30px;
+  box-shadow: $bos-shadow-div;
+  border-radius: 8px;
+}
+
+.backgroundStyle h2 {
+  width: 200px;
+  color: $white;
+}
+
+.loginSignupForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  position: relative;
+  width: 600px;
+  height: 615px;
+  left: 325px;
+  z-index: 2;
+  box-shadow: $bos-shadow-div;
+  border-radius: $border-radius;
+}
+
+.loginSignupForm img {
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+.loginSignupForm form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginSignupForm input {
+  padding: $input-padding;
+  width: 400px;
+  border: none;
+  margin: 15px;
+  box-shadow: $input-box-shadow;
+  font-style: $primary-font;
+  font-family: $primary-font;
+  font-weight: 300;
+}
+
+.loginSignupForm a {
+  color: $peach-fuzz-dark;
+  text-decoration: none;
+}
+
+.formButton {
+  background: $peach-fuzz-dark;
+  color: $white;
+  border-radius: $button-border-radius;
+  font-family: $primary-font;
+  font-weight: bold !important;
+}

@@ -8,3 +8,39 @@
  color: white;
  border-radius: $border-radius;
 }
+
+.pickOfDay img {
+  max-height: 450px;
+  width: 100%;
+  object-fit: fill;
+}
+
+.TwoCol {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: $div-padding;
+  background: $white;
+  border-radius: $border-radius;
+  box-shadow: $bos-shadow-div;
+}
+
+.leftDiv section {
+  text-align: center;
+}
+
+.instructions {
+  display: flex;
+  justify-content: space-around;
+  padding: $padding-between;
+  background: $white;
+  box-shadow: $bos-shadow-div;
+    div {
+      background: $peach-fuzz-dark;
+      color: $white;
+      // padding: $div-padding;
+      width: 250px;
+      padding: $div-padding;
+    }
+}
+

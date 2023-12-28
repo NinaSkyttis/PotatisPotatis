@@ -1,19 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&display=swap');
 
 $black: #000;
-$white: #FCFAF6;
+$white: #FFF;
 $peach-fuzz: #F3CFB4;
 $peach-fuzz-medium: #E2AE89;
 $peach-fuzz-dark: #B35A41;
 $background: #F5F4F6;
 $christmas-red: #D93000;
-$background-gradient: conic-gradient(from 221deg at 50% 50%, rgba(226, 174, 137, 0.68) 68.888418674469deg, rgba(243, 207, 180, 0.44) 202.94589042663574deg, rgba(179, 90, 65, 0.29) 359.83569860458374deg);
+$background-gradient: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
+    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 400px);
 $primary-font: 'Josefin Sans', sans-serif;
 $primary-weight: 300;
 $h2-font-size: 36px;
 $div-padding: 20px;
 $border-radius: 6px;
-$bos-shadow-div: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+$bos-shadow-div: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;;
+$left-div-padding: 30px;
+$button-border-radius: 4px;
+$button-padding: 15px 20px;
+$padding-between: 25px 0px;
+$input-padding: 10px 20px;
+$input-box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 
 * {
   box-sizing: border-box;
@@ -38,12 +46,19 @@ form {
   width: 200px;
 }
 
-button {
-  padding: 15px 20px;
+.button {
+  padding: $button-padding;
   background: $peach-fuzz;
   border: none;
   border-radius: 6px;
   width: 200px;
+}
+
+.borderButton {
+  border: 1px solid black;
+  background: transparent;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
 }
 
 .centerDiv {
@@ -53,5 +68,12 @@ button {
   padding: $div-padding;
   border-radius: $border-radius;
   box-shadow: $bos-shadow-div;
+}
+
+.leftDiv {
+  display: flex;
+  flex-direction: column;
+  padding: $left-div-padding;
+  justify-content: center;
 }
 
