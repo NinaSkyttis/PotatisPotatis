@@ -34,10 +34,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   font-family: $primary-font;
   font-weight: $primary-weight;
   height: 100vh;
+  width: 100%;
   margin: 0px;
 }
 
@@ -60,6 +60,31 @@ form {
   background: transparent;
   border-radius: $button-border-radius;
   padding: $button-padding;
+}
+
+.goBackLink {
+  display: flex;
+  justify-content: flex-start;
+  padding: 15px;
+  margin: 15px;
+  height: 10px;
+  text-decoration: none;
+  color: $black;
+}
+
+.goBackLink:hover {
+  color: $peach-fuzz-dark;
+}
+
+.arrow {
+    border: solid;
+    border-width: 0px 0px 2px 2px;
+    display: inline-block;
+    padding: 3px;
+    height: 5px;
+    transform: rotate(45deg);
+    margin-top: 2px;
+    margin-right: 2px;
 }
 
 .centerDiv {

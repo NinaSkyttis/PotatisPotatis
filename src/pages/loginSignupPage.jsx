@@ -1,11 +1,13 @@
 import React from 'react';
 import logoBlack from '../img/logoblack.png';
 import '../scss/_login_signup.scss';
+import { Link } from 'react-router-dom';
 
 const LoginSignupPage = () => {
   return (
     <>
-      <section className="loginSignupStyle">
+      <div className="loginSignupStyle">
+        <Link to="/welcome-page" className="goBackLink"><i className="arrow left"></i>Go back</Link>
         <div className="backgroundStyle">
           <h1>All of your favorite recipes, <br/> all in one place</h1>
           <div className="loginSignupForm">
@@ -20,7 +22,7 @@ const LoginSignupPage = () => {
             </form>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
