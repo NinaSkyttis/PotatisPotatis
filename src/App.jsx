@@ -1,7 +1,9 @@
 import React from 'react';
-import ChapterCreator from './componets/ChapterCreator';
-import RecipeDisplay from './componets/RecipeDisplay';
-import CookbookDisplay from './componets/CookbookDisplay';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import Inspiration from './pages/Inspiration';
+import WelcomePage from './pages/WelcomePage'
+// import CookbookDisplay from './componets/CookbookDisplay';
 import Navbar from './componets/Navbar';
 import Footer from './componets/Footer';
 // import {store} from '../store.js';
@@ -10,12 +12,25 @@ import Footer from './componets/Footer';
 const App = () => {
   return (
     <div>
-      <Navbar/>
-      <ChapterCreator/>
-      <CookbookDisplay/>
-      <RecipeDisplay/>
-      <Footer/>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/homepage" element={<HomePage/>} />
+          <Route path="/inspiration" element={<Inspiration/>} />
+          <Route path="/welcome-page" element={<WelcomePage />} />
+        </Routes>
+        <Footer/>
+      </Router>
     </div>
+
+  // <div>
+  //   <Navbar/>
+  //   <ChapterCreator/>
+  //   <CookbookDisplay/>
+  //   <RecipeDisplay/>
+  //   <Footer/>
+  // </div>
   );
 };
 

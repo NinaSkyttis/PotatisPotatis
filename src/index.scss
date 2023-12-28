@@ -10,6 +10,14 @@ $christmas-red: #D93000;
 $background-gradient: conic-gradient(from 221deg at 50% 50%, rgba(226, 174, 137, 0.68) 68.888418674469deg, rgba(243, 207, 180, 0.44) 202.94589042663574deg, rgba(179, 90, 65, 0.29) 359.83569860458374deg);
 $primary-font: 'Josefin Sans', sans-serif;
 $primary-weight: 300;
+$h2-font-size: 36px;
+$div-padding: 20px;
+$border-radius: 6px;
+$bos-shadow-div: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   color: $black;
@@ -36,5 +44,14 @@ button {
   border: none;
   border-radius: 6px;
   width: 200px;
+}
+
+.centerDiv {
+  display: flex;
+  justify-content: center;
+  background: $white;
+  padding: $div-padding;
+  border-radius: $border-radius;
+  box-shadow: $bos-shadow-div;
 }
 

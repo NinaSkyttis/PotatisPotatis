@@ -1,0 +1,10 @@
+@import '../index.scss';
+
+.elevatorPitch {
+ max-width: 800px;
+ font-size: $h2-font-size;
+ padding: $div-padding;
+ background: $peach-fuzz-medium;
+ color: white;
+ border-radius: $border-radius;
+}

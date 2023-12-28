@@ -5,18 +5,29 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchRecipes} from '../actions/actions';
 import '../scss/_navbar_footer.scss';
 import logoblack from '../img/logoblack.png';
+import {Link} from 'react-router-dom';
 
 const Navbar = (props) => {
   return (
     <nav className="nav navbar">
       <ul>
-        <li><a href="/">inspiration</a></li>
-        <li><a href="/my-cookbook">my cookbook</a></li>
+        <li>
+          <Link to="/inspiration">inspiration</Link>
+        </li>
+        <li>
+          <Link to="/my-cookbook">my cookbook</Link>
+        </li>
       </ul>
-      <img src={logoblack} alt="Logo"/>
+      <div>
+        <Link to="/homepage"><img src={logoblack} alt="Logo" /></Link>
+      </div>
       <ul>
-        <li><a href="/">search</a></li>
-        <li><a href="/">login/signup</a></li>
+        <li>
+          <Link to="/welcome-page">welcome page</Link>
+        </li>
+        <li>
+          <Link to="/login-signup">login/signup</Link>
+        </li>
       </ul>
     </nav>
   );
