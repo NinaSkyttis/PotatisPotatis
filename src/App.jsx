@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import MyCookbook from './pages/MyCookbook';
 import Inspiration from './pages/Inspiration';
 import WelcomePage from './pages/WelcomePage';
 import LoginSignupPage from './pages/loginSignupPage';
-// import CookbookDisplay from './componets/CookbookDisplay';
+// import MyChapters from './componets/MyChapters';
 import Navbar from './componets/Navbar';
 import Footer from './componets/Footer';
 // import {store} from '../store.js';
@@ -22,8 +22,9 @@ const Navigation = () => {
       {!isLoginSignupPage() && <Navbar/>}
       {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/homepage" element={<HomePage/>} />
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/my-cookbook" element={<MyCookbook />} />
+        <Route path="/homepage" element={<WelcomePage/>} />
         <Route path="/inspiration" element={<Inspiration/>} />
         <Route path="/welcome-page" element={<WelcomePage />} />
         <Route path="/login-signup" element={<LoginSignupPage />} />

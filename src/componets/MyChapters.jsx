@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
 
-const CookbookDisplay = (props) => {
+const MyChapters = (props) => {
   const dispatch = useDispatch();
   const {chapterList, error} = useSelector((state) => state.potatis);
 
@@ -31,4 +31,4 @@ const CookbookDisplay = (props) => {
   );
 };
 
-export default CookbookDisplay;
+export default MyChapters;
