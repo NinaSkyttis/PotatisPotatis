@@ -26,31 +26,33 @@ export const addChapter = (title) => async (dispatch) => {
   }
 };
 
-// export const addRecipe = (title) => async (dispatch) => {
-//   try {
-//     await fetch('/api/chapters', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ title }),
-//     });
+export const addRecipe = (title, url, collectionId) => async (dispatch) => {
+  try {
+    await fetch('/api/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({title, url, collectionId}),
+    });
 
-//     const payload = {
-//       title,
-//     };
+    const payload = {
+      title,
+      url,
+      collectionId,
+    };
 
-//     dispatch({
-//       type: types.ADD_CHAPTER,
-//       payload,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: types.ADD_CHAPTER_FAILURE,
-//       payload: error.message,
-//     });
-//   }
-// };
+    await dispatch({
+      type: types.ADD_RECIPE_SUCCESS,
+      payload,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.ADD_RECIPE_FAILURE,
+      payload: error.message,
+    });
+  }
+};
 
 export const fetchRecipes = () => async (dispatch) => {
   try {

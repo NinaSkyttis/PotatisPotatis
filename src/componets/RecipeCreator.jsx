@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Dropdown from 'react-dropdown';
+import {addRecipe} from '../actions/actions';
 import 'react-dropdown/style.css';
 
 const RecipeCreator = (props) => {
@@ -27,12 +28,12 @@ const RecipeCreator = (props) => {
 
   const submitRecipe = async (event) => {
     event.preventDefault();
-
-    await dispatch(addRecipe({chaptersArr: [title, url, collectionId]}));
+    console.log('title, url, collectionId --> ', title, url, collectionId);
+    await dispatch(addRecipe(title, url, collectionId));
 
     setTitle('');
     setUrl('');
-    // setCollectionId('');
+    setCollectionId('');
   };
 
   const handleDropdownChange = (selectedOption) => {
@@ -47,12 +48,22 @@ const RecipeCreator = (props) => {
   return (
     <div>
       <form onSubmit={submitRecipe}>
-        <input id="title" required />
-        <input id="url" required />
+        <input
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <input
+          id="url"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          required
+        />
 
         {/* Dropdown for collectionId */}
         <Dropdown
-          id="collection_id"
+          id="recipeCollectionId"
           options={chapterOptionsDropdown}
           onChange={handleDropdownChange}
           value={''}

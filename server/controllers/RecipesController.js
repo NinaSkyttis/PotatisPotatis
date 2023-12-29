@@ -7,11 +7,12 @@ const pool = new Pool({
 const RecipesController = {};
 
 RecipesController.addRecipe = async (req, res, next) => {
-  const {title, url, collection_id} = req.body;
+  let {title, url, collectionId} = req.body;
+  collectionId = parseInt(collectionId);
   try {
     const result = await pool.query(
         // eslint-disable-next-line max-len
-        'INSERT INTO public.recipe (title, url, collection_id) VALUES ($1, $2, $3)', [title, url, collection_id],
+        'INSERT INTO public.recipe (title, url, collection_id) VALUES ($1, $2, $3)', [title, url, collectionId],
     );
     res.locals.result = result;
     return next();
