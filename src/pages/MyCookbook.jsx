@@ -1,10 +1,9 @@
 import React from 'react';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ChapterCreator from '../componets/ChapterCreator';
+import RecipeCreator from '../componets/RecipeCreator';
 import RecipeDisplay from '../componets/RecipeDisplay';
 import MyChapters from '../componets/MyChapters';
-import Navbar from '../componets/Navbar';
-import Footer from '../componets/Footer';
 // import {Link} from 'react-router-dom';
 
 const HomePage = () => {
@@ -12,6 +11,7 @@ const HomePage = () => {
     <div>
       <ChapterCreator />
       <MyChapters />
+      <RecipeCreator/>
       <RecipeDisplay />
     </div>
   );

@@ -7,6 +7,7 @@ require('dotenv').config();
 // const chaptersController = require('./controllers/ChaptersController');
 
 const {Pool} = require('pg');
+// eslint-disable-next-line no-unused-vars
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });

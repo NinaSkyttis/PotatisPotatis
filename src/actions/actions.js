@@ -26,6 +26,31 @@ export const addChapter = (title) => async (dispatch) => {
   }
 };
 
+// export const addRecipe = (title) => async (dispatch) => {
+//   try {
+//     await fetch('/api/chapters', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ title }),
+//     });
+
+//     const payload = {
+//       title,
+//     };
+
+//     dispatch({
+//       type: types.ADD_CHAPTER,
+//       payload,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: types.ADD_CHAPTER_FAILURE,
+//       payload: error.message,
+//     });
+//   }
+// };
 
 export const fetchRecipes = () => async (dispatch) => {
   try {
@@ -47,7 +72,7 @@ export const fetchCookbook = () => async (dispatch) => {
   try {
     const response = await fetch('/api/chapters');
     const chapters = await response.json();
-    console.log(chapters, 'chapters in fetchCookbook')
+    console.log(chapters, 'chapters in fetchCookbook');
     dispatch({
       type: types.FETCH_COOKBOOK_SUCCESS,
       payload: chapters,

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 const express = require('express');
-// const app = express();
+const RecipesController = require('../controllers/RecipesController');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 const {Pool} = require('pg');
@@ -11,12 +11,16 @@ const pool = new Pool({
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM public.recipe');
-    // console.log(result.rows, '<--- this is the result');
+    console.log(result.rows, '<--- this is the result');
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({error: 'Internal Server Error'});
   }
+});
+
+router.post('/', RecipesController.addRecipe, (req, res) => {
+  res.status(200).json(res.locals.result);
 });
 
 module.exports = router;

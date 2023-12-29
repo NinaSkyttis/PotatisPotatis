@@ -10,7 +10,9 @@ ChaptersController.addChapter = async (req, res, next) => {
   try {
     console.log('hi');
     const {title} = req.body;
-    const returnChapter = await pool.query('INSERT INTO public.collections (title) VALUES ($1) RETURNING *', [title]);
+    const returnChapter = await pool.query(
+        'INSERT INTO public.collections (title) VALUES ($1) RETURNING *', [title],
+    );
     res.locals.returnChapter = returnChapter;
     return next();
   } catch (error) {

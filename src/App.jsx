@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useNavigate}
+  from 'react-router-dom';
 import MyCookbook from './pages/MyCookbook';
 import Inspiration from './pages/Inspiration';
 import WelcomePage from './pages/WelcomePage';
