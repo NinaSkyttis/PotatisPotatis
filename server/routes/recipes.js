@@ -8,6 +8,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM public.recipe');
@@ -22,5 +23,15 @@ router.get('/', async (req, res) => {
 router.post('/', RecipesController.addRecipe, (req, res) => {
   res.status(200).json(res.locals.result);
 });
+
+// router.get('/', async (req, res) => {
+//   try {
+//     // Your existing code
+//   } catch (error) {
+//     console.error('Error in chapters route:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
 
 module.exports = router;

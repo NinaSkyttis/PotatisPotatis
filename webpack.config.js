@@ -6,18 +6,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
-  // entry: './src/client/index.jsx',
+  entry: './src/client/index.jsx',
 
   // adding react-hot-loader to entry since I
   // initially had to rebundle my app when
   // I made a filename change. This might resolve the issue.
   entry: './src/index.js',
 
+  // output: {
+  //   path: path.join(__dirname, '/dist'),
+  //   publicPath: '/',
+  //   filename: 'bundle.js',
+  // },
+
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
+
 
   plugins: [
     new HtmlWebpackPlugin({

@@ -17,9 +17,8 @@ router.get('/', ChaptersController.displayAllChapters, (req, res) => {
   res.status(200).json(res.locals.result);
 });
 // getting one
-router.get('/:id', (req, res) => {
-//   const id = req.params.id;
-  res.send(req.params.id);
+router.get('/:id', ChaptersController.displayChapter, (req, res) => {
+  res.status(200).json(res.locals.chapterResult)
 });
 
 // creating one
@@ -36,6 +35,15 @@ router.patch('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 
 });
+
+// router.get('/', async (req, res) => {
+//   try {
+//     // Your existing code
+//   } catch (error) {
+//     console.error('Error in chapters route:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
 
 
 module.exports = router;

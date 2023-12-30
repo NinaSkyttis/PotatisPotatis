@@ -1,6 +1,7 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes, useNavigate}
+import {Route, Routes, useNavigate}
   from 'react-router-dom';
+// import { HashRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import MyCookbook from './pages/MyCookbook';
 import Inspiration from './pages/Inspiration';
 import WelcomePage from './pages/WelcomePage';
@@ -15,11 +16,12 @@ const Navigation = () => {
   useNavigate();
 
   const isLoginSignupPage = () => {
-    return location.pathname === '/login-signup';
+    return window.location.hash.startsWith('#/login-signup');
   };
 
   return (
     <div>
+      {/* <Router> */}
       {!isLoginSignupPage() && <Navbar/>}
       {/* <Navbar /> */}
       <Routes>
@@ -31,15 +33,14 @@ const Navigation = () => {
         <Route path="/login-signup" element={<LoginSignupPage />} />
       </Routes>
       {!isLoginSignupPage() && <Footer />}
+      {/* </Router> */}
     </div>
   );
 };
 
 const App = () => {
   return (
-    <Router>
-      <Navigation/>
-    </Router>
+    <Navigation/>
   );
 };
 

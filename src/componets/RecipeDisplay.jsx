@@ -29,7 +29,7 @@ const RecipeDisplay = (props) => {
       ) : (
         <ul>
           {recipeList && recipeList.map((item) => (
-            <li key={item.recipe._id}>
+            <li key={item.recipe.id}>
               <p>{item.recipe.title}</p>
               {/* {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />} */}
             </li>

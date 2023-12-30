@@ -11,7 +11,7 @@ ChaptersController.addChapter = async (req, res, next) => {
     console.log('hi');
     const {title} = req.body;
     const returnChapter = await pool.query(
-        'INSERT INTO public.collections (title) VALUES ($1) RETURNING *', [title],
+        'INSERT INTO public.chapters (title) VALUES ($1) RETURNING *', [title],
     );
     res.locals.returnChapter = returnChapter;
     return next();
@@ -23,10 +23,18 @@ ChaptersController.addChapter = async (req, res, next) => {
 
 
 ChaptersController.displayAllChapters = async (req, res, next) => {
-  const result = await pool.query('SELECT * FROM public.collections');
+  const result = await pool.query('SELECT * FROM public.chapters');
   console.log('this is the result of the latest input', res.locals.result);
   res.locals.result = result.rows;
   return next();
 };
+
+
+ChaptersController.displayChapter = async (req, res, next) => {
+  const id = req.params.id;
+  const chapterResult = await pool.query('SELECT recipe.* FROM recipe JOIN recipes_in_chapters ON recipe._id = recipes_in_chapters.recipe_id WHERE recipes_in_chapters.collection_id = $1', [id]);
+  res.locals.chapterResult = chapterResult.rows;
+  return next();
+}
 
 module.exports = ChaptersController;

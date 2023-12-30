@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const path = require('path');
 const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 require('dotenv').config();
@@ -12,10 +13,14 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('dist'));
 
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
 // Importing routes
 const chaptersRouter = require('./routes/chapters');
 const recipesRouter = require('./routes/recipes');
@@ -23,22 +28,10 @@ const recipesRouter = require('./routes/recipes');
 app.use('/api/chapters', chaptersRouter);
 app.use('/api/recipes', recipesRouter);
 
-
-// app.get('/api/recipes', async (req, res) => {
-//   try {
-//     const result = await pool.query('SELECT * FROM public.recipe');
-//     console.log(result.rows, '<--- this is the result');
-//     res.status(200).json(result.rows);
-//   } catch (error) {
-//     console.error('Error executing query', error);
-//     res.status(500).json({error: 'Internal Server Error'});
-//   }
-// });
-
-// app.post('/api/chapters', chaptersController.addChapter, (req, res) => {
-//   res.status(200).json(result.rows);
-//   // handle error here
-// });
+app.get('*', (req, res) => {
+  console.log('Requested URL:', req.url);
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
 
 // Start the server
 app.listen(PORT, () => {
