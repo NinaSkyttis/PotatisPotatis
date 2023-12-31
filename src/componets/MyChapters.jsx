@@ -5,12 +5,38 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
 
 const MyChapters = (props) => {
+  // const dispatch = useDispatch();
+  // const [title, setTitle] = useState('');
+  // const [url, setUrl] = useState('');
+  // const [collectionId, setCollectionId] = useState('');
+  const [myRecipes, setMyRecipes] = useState([]);
+
   const dispatch = useDispatch();
   const {chapterList, error} = useSelector((state) => state.potatis);
 
   useEffect(() => {
     dispatch(fetchCookbook());
   }, [dispatch]);
+
+  useEffect(() => {
+    fetch('/api/recipes')
+        .then((response) => response.json())
+        .then((data) => {
+          setMyRecipes(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching chapters:', error);
+        });
+  }, []);
+
+  // I'm currently tryinig to iterate over chaptersObj and find the recipes that had the same Id. Store them in another object, and then display
+  const chaptersObj = chapterList;
+
+  console.log(chaptersObj, 'chaptersObj');
+  for (let i = 0; i < myRecipes.length; i++) {
+    console.log('recipes in mychapters', myRecipes[i].id);
+  }
+  // console.log('recipes in MyChapters', recipes);
 
   return (
     <div>
