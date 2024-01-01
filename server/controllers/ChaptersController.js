@@ -32,7 +32,7 @@ ChaptersController.displayAllChapters = async (req, res, next) => {
 
 ChaptersController.displayChapter = async (req, res, next) => {
   const id = req.params.id;
-  const chapterResult = await pool.query('SELECT recipe.* FROM recipe JOIN recipes_in_chapters ON recipe._id = recipes_in_chapters.recipe_id WHERE recipes_in_chapters.collection_id = $1', [id]);
+  const chapterResult = await pool.query('SELECT recipes.* FROM recipes JOIN recipes_in_chapters ON recipes._id = recipes_in_chapters.recipe_id WHERE recipes_in_chapters.chapter_id = $1', [id]);
   res.locals.chapterResult = chapterResult.rows;
   return next();
 }

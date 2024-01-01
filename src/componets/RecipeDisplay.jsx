@@ -12,16 +12,23 @@ const RecipeDisplay = (props) => {
   const [imageUrls, setImageUrls] = useState([]);
 
 
+  // useEffect(() => {
+  //   dispatch(fetchRecipes());
+  // }, [dispatch]);
+
   useEffect(() => {
-    dispatch(fetchRecipes());
-  }, [dispatch]);
+    if (!recipeList || recipeList.length === 0) {
+      dispatch(fetchRecipes());
+    }
+  }, [dispatch, recipeList]);
+
 
   // eslint-disable-next-line no-unused-vars
   const getImage = (url) => {
     const imgTags = document.getElementsByTagName('img');
     return imgTags[0];
   };
-
+  console.log('recipeslist in recipedisplay: ', recipeList)
   return (
     <div>
       {error ? (
@@ -29,7 +36,7 @@ const RecipeDisplay = (props) => {
       ) : (
         <ul>
           {recipeList && recipeList.map((item) => (
-            <li key={item.recipe.id}>
+            <li key={item.recipe._id}>
               <p>{item.recipe.title}</p>
               {/* {item.url && <img src={getImage(item.url)} alt={`Image for ${item.title}`} />} */}
             </li>

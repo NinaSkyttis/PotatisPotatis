@@ -18,24 +18,30 @@ const MyChapters = (props) => {
     dispatch(fetchCookbook());
   }, [dispatch]);
 
-  useEffect(() => {
-    fetch('/api/recipes')
-        .then((response) => response.json())
-        .then((data) => {
-          setMyRecipes(data);
-        })
-        .catch((error) => {
-          console.error('Error fetching chapters:', error);
-        });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/api/recipes')
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setMyRecipes(data);
+  //       })
+  //       .catch((error) => {
+  //         console.error('Error fetching chapters:', error);
+  //       });
+  // }, []);
 
   // I'm currently tryinig to iterate over chaptersObj and find the recipes that had the same Id. Store them in another object, and then display
-  const chaptersObj = chapterList;
+  const chaptersObj = {};
 
-  console.log(chaptersObj, 'chaptersObj');
-  for (let i = 0; i < myRecipes.length; i++) {
-    console.log('recipes in mychapters', myRecipes[i].id);
-  }
+  // console.log('myrecipes, ', myRecipes);
+  // console.log('chapterList', chapterList);
+
+  // // input: myRecipes: [{_id: 1, title: 'Black Bean Soup', url: '123'}, {_id: 2....}]
+  // // input: chaptersList: [{_id: 14, title: 'ff', url: 'ff}, {id: 15, ....}]
+
+  
+  // for (let i = 0; i < myRecipes.length; i++) {
+  //   console.log('recipes in mychapters', myRecipes[i]);
+  // }
   // console.log('recipes in MyChapters', recipes);
 
   return (

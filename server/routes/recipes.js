@@ -11,7 +11,7 @@ const pool = new Pool({
 
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM public.recipe');
+    const result = await pool.query('SELECT * FROM public.recipes');
     console.log(result.rows, '<--- this is the result');
     res.status(200).json(result.rows);
   } catch (error) {
