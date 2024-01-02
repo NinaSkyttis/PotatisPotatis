@@ -9,7 +9,7 @@ const MyChapters = (props) => {
   // const [title, setTitle] = useState('');
   // const [url, setUrl] = useState('');
   // const [collectionId, setCollectionId] = useState('');
-  const [myRecipes, setMyRecipes] = useState([]);
+  // const [myRecipes, setMyRecipes] = useState([]);
 
   const dispatch = useDispatch();
   const {chapterList, error} = useSelector((state) => state.potatis);
@@ -30,7 +30,7 @@ const MyChapters = (props) => {
   // }, []);
 
   // I'm currently tryinig to iterate over chaptersObj and find the recipes that had the same Id. Store them in another object, and then display
-  const chaptersObj = {};
+  // const chaptersObj = {};
 
   // console.log('myrecipes, ', myRecipes);
   // console.log('chapterList', chapterList);
@@ -38,7 +38,6 @@ const MyChapters = (props) => {
   // // input: myRecipes: [{_id: 1, title: 'Black Bean Soup', url: '123'}, {_id: 2....}]
   // // input: chaptersList: [{_id: 14, title: 'ff', url: 'ff}, {id: 15, ....}]
 
-  
   // for (let i = 0; i < myRecipes.length; i++) {
   //   console.log('recipes in mychapters', myRecipes[i]);
   // }
