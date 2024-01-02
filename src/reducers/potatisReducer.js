@@ -40,19 +40,20 @@ const potatisReducer = (state = initialState, action) => {
         ...state,
         recipeList: uniqueRecipeList,
       };
-    case types.FETCH_RECIPES_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-      };
+    // case types.FETCH_RECIPES_FAILURE:
+    //   return {
+    //     ...state,
+    //     error: action.payload,
+    //   };
     case types.FETCH_COOKBOOK_SUCCESS:
       return {
         ...state,
-        chapterList: action.payload.map((chapter) => ({
+        chapterList: action.payload.chapters.map((chapter) => ({
           _id: chapter._id,
           title: chapter.title,
         })),
       };
+
     default:
       return state;
   }

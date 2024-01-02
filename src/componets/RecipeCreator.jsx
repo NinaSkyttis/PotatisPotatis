@@ -18,7 +18,7 @@ const RecipeCreator = (props) => {
         .then((response) => response.json())
         .then((data) => {
         // Assuming data is an array of chapters, update the options
-          setChapterOptions(data);
+          setChapterOptions(data.chapters);
         })
         .catch((error) => {
           console.error('Error fetching chapters:', error);
@@ -39,6 +39,9 @@ const RecipeCreator = (props) => {
   const handleDropdownChange = (selectedOption) => {
     setCollectionId(selectedOption.value);
   };
+  
+  // let newChapterOptions = chapterOptions.chapters;
+  console.log(chapterOptions, 'newChapterOptions');
 
   const chapterOptionsDropdown = chapterOptions.map((chapter) => ({
     value: chapter._id,

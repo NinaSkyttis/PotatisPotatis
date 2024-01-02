@@ -28,7 +28,7 @@ const RecipeDisplay = (props) => {
     const imgTags = document.getElementsByTagName('img');
     return imgTags[0];
   };
-  console.log('recipeslist in recipedisplay: ', recipeList)
+  // console.log('recipeslist in recipedisplay: ', recipeList)
   return (
     <div>
       {error ? (
