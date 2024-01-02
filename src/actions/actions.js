@@ -46,6 +46,8 @@ export const addRecipe = (title, url, collectionId) => async (dispatch) => {
       type: types.ADD_RECIPE_SUCCESS,
       payload,
     });
+
+    dispatch(fetchCookbook());
   } catch (error) {
     dispatch({
       type: types.ADD_RECIPE_FAILURE,
@@ -77,7 +79,11 @@ export const fetchCookbook = () => async (dispatch) => {
     // console.log(chapters, 'chapters in fetchCookbook');
     dispatch({
       type: types.FETCH_COOKBOOK_SUCCESS,
-      payload: data,
+      payload: {
+        chapters: data.chapters,
+        recipesInChapters: data.recipesInChapters,
+        recipes: data.recipes,
+      },
     });
   } catch (error) {
     dispatch({

@@ -10,9 +10,9 @@ const HomePage = () => {
   return (
     <div>
       <ChapterCreator />
+      <RecipeCreator />
       <MyChapters />
-      <RecipeCreator/>
-      <RecipeDisplay />
+      {/* <RecipeDisplay /> */}
     </div>
   );
 };

@@ -6,11 +6,12 @@ import {fetchCookbook} from '../actions/actions';
 
 const MyChapters = (props) => {
   const dispatch = useDispatch();
-  const {chapters, recipesInChapters, recipes, error} = useSelector((state) => state.potatis);
+  const {error, chapters, recipesInChapters, recipes} = useSelector((state) => state.potatis);
 
-  // console.log('recipes in chapters: ', recipesInChapters);
-  // console.log('recipes: ', recipes);
-  // console.log('chapters:', chapters);
+  useEffect(() => {
+    dispatch(fetchCookbook());
+  }, [dispatch]);
+
   const chapterObj = {};
 
   chapters.forEach((chapter) => {
@@ -34,9 +35,8 @@ const MyChapters = (props) => {
   });
 
   const chapterArr = [];
+  // eslint-disable-next-line guard-for-in
   for (const key in chapterObj) {
-    // const id = chapter;
-    // console.log(id);
     chapterArr.push(chapterObj[key]);
   }
 
