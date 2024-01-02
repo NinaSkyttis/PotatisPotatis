@@ -1,0 +1,84 @@
+@import '../index.scss';
+
+.myCookbook {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.create {
+  display: flex;
+  justify-content: space-around;
+}
+
+.myCookbook h2 {
+  font-size: $h2-font-size;
+}
+
+.chapter {
+  display: flex;
+  align-items: center;
+}
+
+.chapter h2 {
+  padding-right: 10px;
+}
+
+.chapter a {
+  color: $peach-fuzz-dark;
+  font-weight: 600;
+  font-size: $h5-font-size;
+  margin-top: 10px;
+}
+
+.recipeListInChapter {
+  display: flex;
+  max-width: 80%;
+  list-style: none;
+}
+
+.recipeListInChapter h4 {
+  font-size: $h4-font-size;
+}
+
+.recipeListInChapter li {
+  display: flex;
+  flex-direction: column;
+  background: #FFF;
+  width: 200px;
+  margin: 10px;
+  padding: 20px;
+  word-wrap: break-word;
+  list-style: none;
+}
+
+.recipeButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  bottom: 0;
+}
+
+.recipeButtons button {
+  padding: 5px 10px;
+  box-shadow: none;
+  border-radius: 4px;
+  border: none;
+  font-family: $primary-font;
+  font-size: $button-font-size;
+  font-weight: 200;
+}
+
+.edit {
+  background: $peach-fuzz-dark;
+  color: white;
+}
+
+.view {
+  background: transparent;
+  color: $peach-fuzz-dark;
+  border: 1px solid $peach-fuzz-dark !important;
+}

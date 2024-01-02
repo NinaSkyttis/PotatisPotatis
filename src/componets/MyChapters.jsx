@@ -55,12 +55,20 @@ const MyChapters = (props) => {
         <ul>
           {chapterArr.map((item) => (
             <li key={item.chapterId}>
-              <h2>{item.title}</h2>
-              <ul>
+              <div className="chapter">
+                <h2>{item.title}</h2>
+                <a>Go to chapter</a>
+              </div>
+              <ul className="recipeListInChapter">
                 {item.recipes.map((recipe) => (
                   <li key={recipe.recipeId}>
+
                     <h4>{recipe.title}</h4>
                     <a href={recipe.url}>{recipe.url}</a>
+                    <div className="recipeButtons">
+                      <button className="edit">edit</button>
+                      <button className="view">view</button>
+                    </div>
                   </li>
                 ))}
               </ul>
