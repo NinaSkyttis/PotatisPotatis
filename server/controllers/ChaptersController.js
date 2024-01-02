@@ -25,10 +25,12 @@ ChaptersController.addChapter = async (req, res, next) => {
 ChaptersController.displayAllChapters = async (req, res, next) => {
   const chapters = await pool.query('SELECT * FROM public.chapters');
   const recipesInChapters = await pool.query('SELECT * FROM public.recipes_in_chapters');
+  const recipes = await pool.query('SELECT * FROM public.recipes');
   const returnObj = {
     chapters: chapters.rows,
     recipesInChapters: recipesInChapters.rows,
-  }
+    recipes: recipes.rows,
+  };
   res.locals.result = returnObj;
   return next();
 };

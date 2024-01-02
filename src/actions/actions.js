@@ -73,11 +73,11 @@ export const fetchRecipes = () => async (dispatch) => {
 export const fetchCookbook = () => async (dispatch) => {
   try {
     const response = await fetch('/api/chapters');
-    const chapters = await response.json();
-    console.log(chapters, 'chapters in fetchCookbook');
+    const data = await response.json();
+    // console.log(chapters, 'chapters in fetchCookbook');
     dispatch({
       type: types.FETCH_COOKBOOK_SUCCESS,
-      payload: chapters,
+      payload: data,
     });
   } catch (error) {
     dispatch({

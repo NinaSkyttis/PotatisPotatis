@@ -7,6 +7,7 @@ const initialState = {
   chapterList: [],
   recipeList: [],
   recipesInChapters: [],
+  recipes: [],
   lastChapterId: 0,
   newChapter: '',
 };
@@ -57,6 +58,12 @@ const potatisReducer = (state = initialState, action) => {
           chapterId: chapARec.chapter_id,
           recipeId: chapARec.recipe_id,
         })),
+        recipes: action.payload.recipes.map((recipe) => ({
+          recipeId: recipe._id,
+          title: recipe.title,
+          url: recipe.url,
+        })),
+        
       };
     case types.FETCH_COOKBOOK_FAILURE:
       return {
