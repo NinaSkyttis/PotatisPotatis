@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
 // import {createSlice} from '@reduxjs/toolkit';
 import * as types from '../constants/actionTypes';
 
 const initialState = {
   totalCollections: 0,
   totalChapters: 0,
-  chapterList: [],
+  chapters: [],
   recipeList: [],
   recipesInChapters: [],
   recipes: [],
@@ -17,8 +18,8 @@ const potatisReducer = (state = initialState, action) => {
     case types.ADD_CHAPTER:
       return {
         ...state,
-        chapterList: [
-          ...state.chapterList,
+        chapters: [
+          ...state.chapters,
           {
             id: state.lastChapterId + 1,
             title: action.payload.title,
@@ -36,7 +37,7 @@ const potatisReducer = (state = initialState, action) => {
 
       const updatedRecipeList = [...state.recipeList, ...newRecipes];
       const uniqueRecipeList = Array.from(new Set(updatedRecipeList.map((r) => r.recipe._id)))
-        .map((recipeId) => updatedRecipeList.find((r) => r.recipe._id === recipeId));
+          .map((recipeId) => updatedRecipeList.find((r) => r.recipe._id === recipeId));
 
       return {
         ...state,
@@ -50,20 +51,20 @@ const potatisReducer = (state = initialState, action) => {
     case types.FETCH_COOKBOOK_SUCCESS:
       return {
         ...state,
-        chapterList: action.payload.chapters.map((chapter) => ({
+        chapters: action.payload.chapters.map((chapter) => ({
           _id: chapter._id,
           title: chapter.title,
         })),
         recipesInChapters: action.payload.recipesInChapters.map((chapARec) => ({
-          chapterId: chapARec.chapter_id,
-          recipeId: chapARec.recipe_id,
+          chapterIdInChapters: chapARec.chapter_id,
+          recipeIdInChapters: chapARec.recipe_id,
         })),
         recipes: action.payload.recipes.map((recipe) => ({
           recipeId: recipe._id,
           title: recipe.title,
           url: recipe.url,
         })),
-        
+
       };
     case types.FETCH_COOKBOOK_FAILURE:
       return {

@@ -18,7 +18,7 @@ router.get('/', ChaptersController.displayAllChapters, (req, res) => {
 });
 // getting one
 router.get('/:id', ChaptersController.displayChapter, (req, res) => {
-  res.status(200).json(res.locals.chapterResult)
+  res.status(200).json(res.locals.chapterResult);
 });
 
 // creating one

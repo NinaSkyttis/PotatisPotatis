@@ -5,43 +5,47 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
 
 const MyChapters = (props) => {
-  // const dispatch = useDispatch();
-  // const [title, setTitle] = useState('');
-  // const [url, setUrl] = useState('');
-  // const [collectionId, setCollectionId] = useState('');
-  // const [myRecipes, setMyRecipes] = useState([]);
-
   const dispatch = useDispatch();
-  const {chapterList, error} = useSelector((state) => state.potatis);
+  const {chapters, recipesInChapters, recipes, error} = useSelector((state) => state.potatis);
+
+  // console.log('recipes in chapters: ', recipesInChapters);
+  // console.log('recipes: ', recipes);
+  // console.log('chapters:', chapters);
+  const chapterObj = {};
+
+  chapters.forEach((chapter) => {
+    chapterObj[chapter._id] = {
+      title: chapter.title,
+      recipes: [],
+      chapterId: chapter._id,
+    };
+  });
+
+  recipesInChapters.forEach((recipeInChapter) => {
+    const {chapterIdInChapters, recipeIdInChapters} = recipeInChapter;
+
+    const chapter = chapterObj[chapterIdInChapters];
+
+    const recipe = recipes.find((recipe) => recipe.recipeId === parseInt(recipeIdInChapters, 10));
+
+    if (chapter && recipe) {
+      chapter.recipes.push(recipe);
+    }
+  });
+
+  const chapterArr = [];
+  for (const key in chapterObj) {
+    // const id = chapter;
+    // console.log(id);
+    chapterArr.push(chapterObj[key]);
+  }
+
+
+  console.log('chapteArr: ', chapterArr);
 
   useEffect(() => {
     dispatch(fetchCookbook());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   fetch('/api/recipes')
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         setMyRecipes(data);
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching chapters:', error);
-  //       });
-  // }, []);
-
-  // I'm currently tryinig to iterate over chaptersObj and find the recipes that had the same Id. Store them in another object, and then display
-  // const chaptersObj = {};
-
-  // console.log('myrecipes, ', myRecipes);
-  // console.log('chapterList', chapterList);
-
-  // // input: myRecipes: [{_id: 1, title: 'Black Bean Soup', url: '123'}, {_id: 2....}]
-  // // input: chaptersList: [{_id: 14, title: 'ff', url: 'ff}, {id: 15, ....}]
-
-  // for (let i = 0; i < myRecipes.length; i++) {
-  //   console.log('recipes in mychapters', myRecipes[i]);
-  // }
-  // console.log('recipes in MyChapters', recipes);
 
   return (
     <div>
@@ -49,13 +53,19 @@ const MyChapters = (props) => {
         <p>Error: {error}</p>
       ) : (
         <ul>
-          {chapterList &&
-              chapterList.map((item) => (
-                <li key={item._id}>
-                  <h2>{item.title}</h2>
-                </li>
-              ))}
-
+          {chapterArr.map((item) => (
+            <li key={item.chapterId}>
+              <h2>{item.title}</h2>
+              <ul>
+                {item.recipes.map((recipe) => (
+                  <li key={recipe.recipeId}>
+                    <h4>{recipe.title}</h4>
+                    <a href={recipe.url}>{recipe.url}</a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
         </ul>
       )}
     </div>
@@ -63,3 +73,28 @@ const MyChapters = (props) => {
 };
 
 export default MyChapters;
+
+// useEffect(() => {
+//   fetch('/api/recipes')
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setMyRecipes(data);
+//       })
+//       .catch((error) => {
+//         console.error('Error fetching chapters:', error);
+//       });
+// }, []);
+
+// I'm currently tryinig to iterate over chaptersObj and find the recipes that had the same Id. Store them in another object, and then display
+// const chaptersObj = {};
+
+// console.log('myrecipes, ', myRecipes);
+// console.log('chapterList', chapterList);
+
+// // input: myRecipes: [{_id: 1, title: 'Black Bean Soup', url: '123'}, {_id: 2....}]
+// // input: chaptersList: [{_id: 14, title: 'ff', url: 'ff}, {id: 15, ....}]
+
+// for (let i = 0; i < myRecipes.length; i++) {
+//   console.log('recipes in mychapters', myRecipes[i]);
+// }
+// console.log('recipes in MyChapters', recipes);

@@ -40,7 +40,7 @@ const RecipeCreator = (props) => {
     setCollectionId(selectedOption.value);
   };
   // let newChapterOptions = chapterOptions.chapters;
-  console.log(chapterOptions, 'newChapterOptions');
+  // console.log(chapterOptions, 'newChapterOptions');
 
   const chapterOptionsDropdown = chapterOptions.map((chapter) => ({
     value: chapter._id,
