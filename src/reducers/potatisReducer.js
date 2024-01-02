@@ -6,6 +6,7 @@ const initialState = {
   totalChapters: 0,
   chapterList: [],
   recipeList: [],
+  recipesInChapters: [],
   lastChapterId: 0,
   newChapter: '',
 };
@@ -40,11 +41,11 @@ const potatisReducer = (state = initialState, action) => {
         ...state,
         recipeList: uniqueRecipeList,
       };
-    // case types.FETCH_RECIPES_FAILURE:
-    //   return {
-    //     ...state,
-    //     error: action.payload,
-    //   };
+    case types.FETCH_RECIPES_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
     case types.FETCH_COOKBOOK_SUCCESS:
       return {
         ...state,
@@ -52,8 +53,16 @@ const potatisReducer = (state = initialState, action) => {
           _id: chapter._id,
           title: chapter.title,
         })),
+        recipesInChapters: action.payload.recipesInChapters.map((chapARec) => ({
+          chapterId: chapARec.chapter_id,
+          recipeId: chapARec.recipe_id,
+        })),
       };
-
+    case types.FETCH_COOKBOOK_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
