@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
+import RecipeCreator from '../componets/RecipeCreator';
 
 const MyChapters = (props) => {
   const dispatch = useDispatch();
@@ -40,19 +41,30 @@ const MyChapters = (props) => {
     chapterArr.push(chapterObj[key]);
   }
 
-
   console.log('chapteArr: ', chapterArr);
 
   useEffect(() => {
     dispatch(fetchCookbook());
   }, [dispatch]);
 
+  const showUpdateRecipe = () => {
+    const x = document.getElementById('updateRecipe');
+    const y = document.getElementById('hideRecipe');
+    console.log('this is x', x);
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+      y.style.display = 'none';
+    } else {
+      x.style.display = 'none';
+      y.style.display = 'block';
+    }
+  };
+
   return (
     <div>
       {error ? (
         <p>Error: {error}</p>
       ) : (
-        <div className="chaptersList">
           <ul className="chaptersList">
             {chapterArr.map((item) => (
               <li key={item.chapterId}>
@@ -62,21 +74,25 @@ const MyChapters = (props) => {
                 </div>
                 <ul className="recipeListInChapter">
                   {item.recipes.map((recipe) => (
-                    <li key={recipe.recipeId}>
+                    <>
+                      <li id='hideRecipe' key={recipe.recipeId} style={{display: 'block'}}>
 
-                      <h4>{recipe.title}</h4>
-                      <a href={recipe.url}>{recipe.url}</a>
-                      <div className="recipeButtons">
-                        <button className="edit">edit</button>
-                        <button className="view">view</button>
+                        <h4>{recipe.title}</h4>
+                        <a href={recipe.url}>{recipe.url}</a>
+                        <div className="recipeButtons">
+                          <button className="edit" id={recipe.recipeId} onClick={showUpdateRecipe}>edit</button>
+                          <button className="view">view</button>
+                        </div>
+                      </li>
+                      <div id="updateRecipe" style={{display: 'none'}}>
+                        <RecipeCreator />
                       </div>
-                    </li>
+                    </>
                   ))}
                 </ul>
               </li>
             ))}
           </ul>
-        </div>
       )}
     </div>
   );
