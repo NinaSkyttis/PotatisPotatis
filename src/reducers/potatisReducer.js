@@ -9,6 +9,7 @@ const initialState = {
   recipeList: [],
   recipesInChapters: [],
   recipes: [],
+  editingRecipeId: null,
   lastChapterId: 0,
   newChapter: '',
 };
@@ -30,6 +31,28 @@ const potatisReducer = (state = initialState, action) => {
         totalChapters: state.totalChapters + 1,
       };
     case types.ADD_RECIPE_SUCCESS:
+      return {
+        ...state,
+        recipes: [
+          ...state.recipes,
+          {
+            title: action.payload.title,
+            url: action.payload.url,
+            collectionId: action.payload.collectionId,
+          },
+        ],
+      };
+    case types.START_EDIT_RECIPE:
+      return {
+        ...state,
+        editingRecipeId: action.payload.recipeId,
+      }
+    case types.STOP_EDIT_RECIPE:
+      return {
+        ...state,
+        editingRecipeId: null,
+      };
+    case types.UPDATE_RECIPE_SUCCESS:
       return {
         ...state,
         recipes: [

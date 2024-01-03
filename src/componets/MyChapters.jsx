@@ -8,6 +8,8 @@ import RecipeCreator from '../componets/RecipeCreator';
 const MyChapters = (props) => {
   const dispatch = useDispatch();
   const {error, chapters, recipesInChapters, recipes} = useSelector((state) => state.potatis);
+  const [editingRecipeId, setEditingRecipeId] = useState(null);
+  const [stopEditingRecipeId, setStopEditingRecipeId] = useState(null);
 
   useEffect(() => {
     dispatch(fetchCookbook());
@@ -47,17 +49,25 @@ const MyChapters = (props) => {
     dispatch(fetchCookbook());
   }, [dispatch]);
 
-  const showUpdateRecipe = () => {
-    const x = document.getElementById('updateRecipe');
-    const y = document.getElementById('hideRecipe');
-    console.log('this is x', x);
-    if (x.style.display === 'none') {
-      x.style.display = 'block';
-      y.style.display = 'none';
-    } else {
-      x.style.display = 'none';
-      y.style.display = 'block';
-    }
+  // const showUpdateRecipe = () => {
+  //   const x = document.getElementById('updateRecipe');
+  //   const y = document.getElementById('hideRecipe');
+  //   console.log('this is x', x);
+  //   if (x.style.display === 'none') {
+  //     x.style.display = 'block';
+  //     y.style.display = 'none';
+  //   } else {
+  //     x.style.display = 'none';
+  //     y.style.display = 'block';
+  //   }
+  // };
+
+  const showUpdateRecipe = (recipeId) => {
+    setEditingRecipeId(recipeId);
+  };
+
+  const doneUpdateRecipe = (recipeId) => {
+    setStopEditingRecipeId(recipeId);
   };
 
   return (
@@ -75,18 +85,41 @@ const MyChapters = (props) => {
                 <ul className="recipeListInChapter">
                   {item.recipes.map((recipe) => (
                     <>
-                      <li id='hideRecipe' key={recipe.recipeId} style={{display: 'block'}}>
+                      <li
+                        id='hideRecipe'
+                        key={recipe.recipeId}
+                        style={{display: editingRecipeId === recipe.recipeId ? 'none' : 'block'}}
+                      >
 
                         <h4>{recipe.title}</h4>
                         <a href={recipe.url}>{recipe.url}</a>
                         <div className="recipeButtons">
-                          <button className="edit" id={recipe.recipeId} onClick={showUpdateRecipe}>edit</button>
-                          <button className="view">view</button>
+                          <button
+                            className="edit"
+                            id={recipe.recipeId}
+                            onClick={() => {
+                              showUpdateRecipe(recipe.recipeId);
+                              doneUpdateRecipe(null);
+                            }}>
+                            edit
+                          </button>
+                          <button
+                            className="view">
+                            view
+                          </button>
                         </div>
                       </li>
-                      <div id="updateRecipe" style={{display: 'none'}}>
-                        <RecipeCreator />
-                      </div>
+                      {editingRecipeId === recipe.recipeId && (
+                        <div id="updateRecipe" style={{display: stopEditingRecipeId === recipe.recipeId ? 'none' : 'block'}}>
+                          <button onClick={
+                            () => {
+                              doneUpdateRecipe(recipe.recipeId);
+                              showUpdateRecipe(null);
+                            }
+                          }>Go back</button>
+                          <RecipeCreator />
+                        </div>
+                      )}
                     </>
                   ))}
                 </ul>

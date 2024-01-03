@@ -56,6 +56,37 @@ export const addRecipe = (title, url, collectionId) => async (dispatch) => {
   }
 };
 
+export const updateRecipe = () => async (recipeId, title, url, collectionId) => {
+  try {
+    await fetch('/api/recipes', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(title, url, collectionId),
+    });
+
+    const payload = {
+      recipeId,
+      title,
+      url,
+      collectionId,
+    };
+
+    await dispatch({
+      type: types.UPDATE_RECIPE_SUCCESS,
+      payload,
+    });
+
+    dispatch(fetchCookbook());
+  } catch (error) {
+    dispatch({
+      type: types.UPDATE_RECIPE_FAILURE,
+      payload: error.message,
+    });
+  }
+};
+
 export const fetchRecipes = () => async (dispatch) => {
   try {
     const response = await fetch('/api/recipes');
@@ -92,3 +123,12 @@ export const fetchCookbook = () => async (dispatch) => {
     });
   }
 };
+
+export const startEditingRecipe = (recipeId) => ({
+  type: 'START_EDIT_RECIPE',
+  payload: {recipeId},
+});
+
+export const stopEditrecipe = () => ({
+  type: 'STOP_EDIT_RECIPE',
+});
