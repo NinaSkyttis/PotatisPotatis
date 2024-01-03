@@ -35,18 +35,20 @@ const RecipeCreator = (props) => {
   }));
 
   return (
-    <div>
+    <div className="createRecipe">
       <form onSubmit={submitRecipe}>
         <input
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
           required
         />
         <input
           id="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
+          placeholder="Url"
           required
         />
 

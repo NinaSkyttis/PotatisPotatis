@@ -5,7 +5,7 @@ $white: #FFF;
 $peach-fuzz: #F3CFB4;
 $peach-fuzz-medium: #E2AE89;
 $peach-fuzz-dark: #B35A41;
-$background: #F5F4F6;
+$background: #fbfbfb;
 $christmas-red: #D93000;
 $background-gradient: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
     radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 400px);
@@ -52,10 +52,13 @@ form {
 
 .button {
   padding: $button-padding;
-  background: $peach-fuzz;
+  background: $peach-fuzz-dark;
   border: none;
   border-radius: 6px;
   width: 200px;
+  font-family: $primary-font;
+  font-size: 16px;
+  color: white;
 }
 
 .borderButton {

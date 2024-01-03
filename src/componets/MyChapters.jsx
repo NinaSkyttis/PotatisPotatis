@@ -52,7 +52,7 @@ const MyChapters = (props) => {
       {error ? (
         <p>Error: {error}</p>
       ) : (
-        <ul>
+        <ul className="chaptersList">
           {chapterArr.map((item) => (
             <li key={item.chapterId}>
               <div className="chapter">

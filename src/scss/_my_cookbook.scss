@@ -27,6 +27,54 @@
   padding-right: 10px;
 }
 
+.chaptersList {
+  list-style: none;
+}
+
+.cookbookHeader {
+  display: flex;
+}
+
+.cookbookHeader button {
+  font-size: $h2-font-size;
+  background: none;
+  border: none;
+  margin-top: -15px;
+  // padding-left: 5px;
+   &:hover {
+    color: $peach-fuzz-dark;
+  }
+}
+
+.createRecipe {
+  display: flex;
+  justify-content: center;
+}
+
+.createRecipe input {
+  padding-left: 10px;
+  font-weight: 300;
+  padding: 6px 12px 6px 7px;
+  margin: 5px 0px;
+  // border: 0.5px solid gray;
+  font-size: 16px;
+  font-family: $primary-font;
+}
+.cookbookFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.cookbookFlex .button {
+  margin-top: -8px;
+}
+
+// input .button {
+//   padding: 0px;
+// }
+
 .chapter a {
   color: $peach-fuzz-dark;
   font-weight: 600;
@@ -53,6 +101,8 @@
   padding: 20px;
   word-wrap: break-word;
   list-style: none;
+  justify-content: space-between;
+  box-shadow: $bos-shadow-div;
 }
 
 .recipeButtons {

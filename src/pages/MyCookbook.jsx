@@ -2,17 +2,42 @@ import React from 'react';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ChapterCreator from '../componets/ChapterCreator';
 import RecipeCreator from '../componets/RecipeCreator';
-import RecipeDisplay from '../componets/RecipeDisplay';
+// import RecipeDisplay from '../componets/RecipeDisplay';
 import MyChapters from '../componets/MyChapters';
 import '../scss/_my_cookbook.scss';
 // import {Link} from 'react-router-dom';
 
 const HomePage = () => {
+  const showCreateChapter = () => {
+    const x = document.getElementById('createChapter');
+    console.log('this is x', x);
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  };
+  const showCreateRecipe = () => {
+    const x = document.getElementById('createRecipe');
+    console.log('this is x', x);
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  };
   return (
     <div className="myCookbook">
-      <h2>MY CHAPTERS</h2>
-      <div className="create">
+      <div className="cookbookFlex">
+        <div className="cookbookHeader">
+          <h2>MY CHAPTERS</h2><button onClick={showCreateChapter}>+</button>
+        </div>
+        <button className="button" onClick={(showCreateRecipe)}>Add Recipe</button>
+      </div>
+      <div id="createChapter" className="createRecipe" style={{display: 'none'}}>
         <ChapterCreator />
+      </div>
+      <div id="createRecipe" style={{display: 'none'}}>
         <RecipeCreator />
       </div>
       <MyChapters />
