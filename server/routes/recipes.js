@@ -24,6 +24,10 @@ router.post('/', RecipesController.addRecipe, (req, res) => {
   res.status(200).json(res.locals.result);
 });
 
+router.patch('/:id', RecipesController.updateRecipe, (req, res) => {
+  res.status(200).json(res.locals.updatedRecipe);
+});
+
 // router.get('/', async (req, res) => {
 //   try {
 //     // Your existing code

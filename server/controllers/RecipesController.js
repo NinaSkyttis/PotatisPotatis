@@ -34,4 +34,28 @@ RecipesController.addRecipe = async (req, res, next) => {
   }
 };
 
+RecipesController.updateRecipe = async (req, res, next) => {
+  const {id} = req.params;
+  const {title, url, chapter_id} = req.body;
+  console.log('chapter_id', chapter_id, 'id', id);
+  try {
+    const updatedRecipe = await pool.query('UPDATE public.recipes SET title = $1, url = $2 WHERE _id = $3 RETURNING _id',
+      [title, url, id]);
+    // const updatedRecipe = await pool.query('UPDATE public.recipes SET (title, url) VALUES ($1, $2) WHERE _id = $3 RETURNING _id',
+    //   [title, url, id],
+    // );
+    const updatedChapterId = await pool.query('UPDATE public.recipes_in_chapters SET chapter_id = $1 WHERE recipe_id = $2 RETURNING chapter_id',
+      [chapter_id, id]);
+    res.locals.updatedRecipe = {
+      chapter_id: chapter_id,
+      updatedRecipe: updatedRecipe,
+    }
+    console.log('updatedRecipe', updatedRecipe);
+    return next();
+  } catch (error) {
+    console.error('Error executing query updating recipe', error);
+    res.status(500).json({error: 'Internal Server Error'});
+  }
+};
+
 module.exports = RecipesController;
