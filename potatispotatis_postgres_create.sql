@@ -36,10 +36,10 @@ CREATE TABLE public.recipes_in_chapters (
  CONSTRAINT "recipes_in_chapters_chapters_fk" FOREIGN KEY ("chapter_id") REFERENCES public.chapters("_id")
 );
 
-INSERT INTO public.chapters	("title") VALUES ('Vegan Dinner under 30 minutes')
-INSERT INTO public.chapters	("title") VALUES ('Weekend Brunch')
-INSERT INTO public.chapters	("title") VALUES ('Hearty Soups')
-INSERT INTO public.chapters	("title") VALUES ('Toddler Friendly Meals')
+INSERT INTO public.chapters	("title") VALUES ('Vegan Dinner under 30 minutes');
+INSERT INTO public.chapters	("title") VALUES ('Weekend Brunch');
+INSERT INTO public.chapters	("title") VALUES ('Hearty Soups');
+INSERT INTO public.chapters	("title") VALUES ('Toddler Friendly Meals');
 
 
 INSERT INTO public.recipes ("title", "url") VALUES ('Super Garlicky Tomato Soup with Smashed White Beans', 'https://minimalistbaker.com/super-garlicky-tomato-soup-with-smashed-white-beans/');
@@ -64,25 +64,25 @@ INSERT INTO public.recipes ("title", "url") VALUES ('Creamy Vegan Pasta', 'https
 
 
 
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 1); -- vegan dinner under 30 minutes
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 2); -- weekend brunch
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 3); -- hearty soups 
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 4); -- toddler friendly meals
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 1); -- vegan dinner under 30 minutes
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 2); -- weekend brunch
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 3); -- hearty soups 
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (0, 4); -- toddler friendly meals
 
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (1, 3); -- hearty soups 
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (2, 3); -- hearty soups 
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (3, 1); -- vegan dinner under 30 minutes pesto pasta
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (4, 1); -- vegan dinner under 30 minutes
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (5, 1); -- vegan dinner under 30 minutes
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (6, 2); -- weekend brunch french toast
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (7, 2); -- weekend brunch Homemade granola
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (8, 2); -- weekend brunch
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (9, 2); -- weekend brunch
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (10, 4); -- toddler friendly meals tater tot
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (11, 4); -- toddler friendly meals
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (12, 3); -- hearty soups 
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (13, 3); -- hearty soups carrot soup
--- INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (14, 1); -- vegan dinner under 30 minutes
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (1, 3); -- hearty soups 
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (2, 3); -- hearty soups 
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (3, 1); -- vegan dinner under 30 minutes pesto pasta
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (4, 1); -- vegan dinner under 30 minutes
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (5, 1); -- vegan dinner under 30 minutes
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (6, 2); -- weekend brunch french toast
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (7, 2); -- weekend brunch Homemade granola
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (8, 2); -- weekend brunch
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (9, 2); -- weekend brunch
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (10, 4); -- toddler friendly meals tater tot
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (11, 4); -- toddler friendly meals
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (12, 3); -- hearty soups 
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (13, 3); -- hearty soups carrot soup
+INSERT INTO public.recipes_in_chapters ("recipe_id", "chapter_id") VALUES (14, 1); -- vegan dinner under 30 minutes
 
 
 
