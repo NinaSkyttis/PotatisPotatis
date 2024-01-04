@@ -37,6 +37,7 @@ const potatisReducer = (state = initialState, action) => {
           ...state.recipes,
           {
             title: action.payload.title,
+            image: action.payload.image,
             url: action.payload.url,
             chapterId: action.payload.chapterId,
           },
@@ -77,6 +78,7 @@ const potatisReducer = (state = initialState, action) => {
         })),
         recipes: action.payload.recipes.map((recipe) => ({
           recipeId: recipe._id,
+          image: recipe.image,
           title: recipe.title,
           url: recipe.url,
         })),

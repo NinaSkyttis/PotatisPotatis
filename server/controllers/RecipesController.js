@@ -7,14 +7,14 @@ const pool = new Pool({
 const RecipesController = {};
 
 RecipesController.addRecipe = async (req, res, next) => {
-  let {title, url, chapterId} = req.body;
+  let {title, image, url, chapterId} = req.body;
   chapterId = parseInt(chapterId);
 
   try {
     // Insert into the recipe table
     const recipeResult = await pool.query(
-        'INSERT INTO public.recipes (title, url) VALUES ($1, $2) RETURNING _id',
-        [title, url],
+        'INSERT INTO public.recipes (title, image, url) VALUES ($1, $2, $3) RETURNING _id',
+        [title, image, url],
     );
 
     const recipeId = recipeResult.rows[0]._id;

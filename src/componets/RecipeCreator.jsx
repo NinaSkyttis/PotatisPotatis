@@ -7,6 +7,7 @@ import 'react-dropdown/style.css';
 const RecipeCreator = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
+  const [image, setimage] = useState('');
   const [url, setUrl] = useState('');
   const [chapterId, setchapterId] = useState('');
   const {chapters} = useSelector((state) => state.potatis);
@@ -15,8 +16,9 @@ const RecipeCreator = (props) => {
     event.preventDefault();
     // console.log('title, url, chapterId --> ', title, url, chapterId);
     const inputTitle = document.getElementById('title');
+    const inputimage = document.getElementById('image');
     const inputUrl = document.getElementById('url');
-    await dispatch(addRecipe(inputTitle.value, inputUrl.value, chapterId));
+    await dispatch(addRecipe(inputTitle.value, inputimage.value, inputUrl.value, chapterId));
 
     setTitle('');
     setUrl('');
@@ -42,6 +44,13 @@ const RecipeCreator = (props) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
+          required
+        />
+        <input
+          id="image"
+          value={image}
+          onChange={(e) => setimage(e.target.value)}
+          placeholder="image"
           required
         />
         <input

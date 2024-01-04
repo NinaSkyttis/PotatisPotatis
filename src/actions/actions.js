@@ -26,18 +26,19 @@ export const addChapter = (title) => async (dispatch) => {
   }
 };
 
-export const addRecipe = (title, url, chapterId) => async (dispatch) => {
+export const addRecipe = (title, image, url, chapterId) => async (dispatch) => {
   try {
     await fetch('/api/recipes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({title, url, chapterId}),
+      body: JSON.stringify({title, image, url, chapterId}),
     });
 
     const payload = {
       title,
+      image,
       url,
       chapterId,
     };

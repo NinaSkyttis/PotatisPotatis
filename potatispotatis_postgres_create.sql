@@ -21,6 +21,7 @@ CREATE TABLE public.chapters (
 CREATE TABLE public.recipes (
  "_id" serial NOT NULL,
  "title" varchar NOT NULL,
+ "image" varchar,
  "url" varchar,
  CONSTRAINT "recipe_pk" PRIMARY KEY ("_id")
 );
@@ -42,23 +43,23 @@ INSERT INTO public.chapters	("title") VALUES ('Hearty Soups');
 INSERT INTO public.chapters	("title") VALUES ('Toddler Friendly Meals');
 
 
-INSERT INTO public.recipes ("title", "url") VALUES ('Super Garlicky Tomato Soup with Smashed White Beans', 'https://minimalistbaker.com/super-garlicky-tomato-soup-with-smashed-white-beans/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Curried Butternut Squash Soup', 'https://minimalistbaker.com/curried-butternut-squash-soup/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Creamy Vegan Pesto Pasta', 'https://minimalistbaker.com/creamy-vegan-pesto-pasta/');
-INSERT INTO public.recipes ("title", "url") VALUES ('20-Minute Mac and Cheese', 'https://minimalistbaker.com/20-minute-mac-and-cheese-vegan/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Easy Grilled Tofu & Asparagus', 'https://simple-veganista.com/grilled-tofu-asparagus-ginger-cauliflower-rice/');
-INSERT INTO public.recipes ("title", "url") VALUES ('French Toast', 'https://theplantbasedschool.com/vegan-french-toast/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Super Garlicky Tomato Soup with Smashed White Beans', 'https://minimalistbaker.com/wp-content/uploads/2022/03/CREAMY-Vegan-Pesto-Pasta-8-ingredients-30-minutes-SO-comforting-and-quick-minimalistbaker-recipe-plantbased-pesto-13.jpg', 'https://minimalistbaker.com/super-garlicky-tomato-soup-with-smashed-white-beans/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Curried Butternut Squash Soup','https://minimalistbaker.com/wp-content/uploads/2015/09/AMAZING-30-Minute-Curried-Butternut-Squash-Soup-Creamy-flavorful-and-perfect-for-fall-vegan-glutenfree-soup-squash-fall-recipe-healthy.jpg', 'https://minimalistbaker.com/curried-butternut-squash-soup/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Creamy Vegan Pesto Pasta','https://minimalistbaker.com/wp-content/uploads/2022/03/CREAMY-Vegan-Pesto-Pasta-8-ingredients-30-minutes-SO-comforting-and-quick-minimalistbaker-recipe-plantbased-pesto-15.jpg', 'https://minimalistbaker.com/creamy-vegan-pesto-pasta/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('20-Minute Mac and Cheese','https://minimalistbaker.com/wp-content/uploads/2021/01/20-Minute-Mac-n-Cheese-Creamy-cheesy-vegan-SO-comforting-Gluten-free-optional-minimalistbaker-recipe-pasta-plantbased-macncheese8.jpg', 'https://minimalistbaker.com/20-minute-mac-and-cheese-vegan/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Easy Grilled Tofu & Asparagus','https://simple-veganista.com/wp-content/uploads/2016/03/easy-grilled-tofu-with-asparagus-1.jpg', 'https://simple-veganista.com/grilled-tofu-asparagus-ginger-cauliflower-rice/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('French Toast','https://theplantbasedschool.com/wp-content/uploads/2023/11/vegan-French-toast-with-berries.jpg', 'https://theplantbasedschool.com/vegan-french-toast/');
 
-INSERT INTO public.recipes ("title", "url") VALUES ('Homemade Granola', 'https://theplantbasedschool.com/homemade-granola/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Easy Oat Cookies with Raisins', 'https://theplantbasedschool.com/oat-cookies/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Southern Blackberry Cobbler', 'https://simple-veganista.com/blackberry-cobbler/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Chocolate Smoothie Bowl', 'https://simple-veganista.com/blackberry-cobbler/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Vegan Tater Tot Casserole', 'https://www.veganblueberry.com/vegan-tater-tot-casserole/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Spaghetti and "Meatballs"', 'https://jessicainthekitchen.com/vegan-spaghetti-and-meatballs/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Homemade Granola','https://theplantbasedschool.com/wp-content/uploads/2023/01/Granola-1.jpg', 'https://theplantbasedschool.com/homemade-granola/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Easy Oat Cookies with Raisins','https://theplantbasedschool.com/wp-content/uploads/2021/12/Oat-cookies-3.jpg', 'https://theplantbasedschool.com/oat-cookies/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Southern Blackberry Cobbler','https://simple-veganista.com/wp-content/uploads/2016/06/best-vegan-blackberry-cobbler-8.jpg', 'https://simple-veganista.com/blackberry-cobbler/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Chocolate Smoothie Bowl','https://simple-veganista.com/wp-content/uploads/2017/02/Chocolate-Almond-Butter-Smoothie-Bowl-3-1.jpg', 'https://simple-veganista.com/chocolate-almond-butter-smoothie-bowl/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Vegan Tater Tot Casserole','https://www.veganblueberry.com/wp-content/uploads/2019/11/vegan-tater-tot-casserole-11.jpg', 'https://www.veganblueberry.com/vegan-tater-tot-casserole/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Spaghetti and "Meatballs"','https://jessicainthekitchen.com/wp-content/uploads/2022/07/vegan-Spaghetti-and-meatballs5593.jpg', 'https://jessicainthekitchen.com/vegan-spaghetti-and-meatballs/');
 
-INSERT INTO public.recipes ("title", "url") VALUES ('Lentil Soup', 'https://simple-veganista.com/hearty-lentil-soup/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Spicy Sesame Carrot Soup with Red Lentils', 'https://thefirstmess.com/2021/09/08/spicy-sesame-carrot-soup/');
-INSERT INTO public.recipes ("title", "url") VALUES ('Creamy Vegan Pasta', 'https://www.loveandlemons.com/vegan-recipes/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Lentil Soup','https://simple-veganista.com/wp-content/uploads/2019/10/vegan-lentil-soup-recipe-8.jpg', 'https://simple-veganista.com/hearty-lentil-soup/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Spicy Sesame Carrot Soup with Red Lentils','https://thefirstmess.com/wp-content/uploads/2021/09/spicy-sesame-carrot-soup-01.jpg', 'https://thefirstmess.com/2021/09/08/spicy-sesame-carrot-soup/');
+INSERT INTO public.recipes ("title", "image", "url") VALUES ('Creamy Vegan Pasta','https://cdn.loveandlemons.com/wp-content/uploads/2019/12/vegan-recipes.jpg', 'https://www.loveandlemons.com/vegan-recipes/');
 
 
 

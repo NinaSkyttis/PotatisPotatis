@@ -9,7 +9,7 @@ const RecipeDisplay = (props) => {
   //   console.log('by this point all is good: ', state.potatis);
 
   // eslint-disable-next-line no-unused-vars
-  const [imageUrls, setImageUrls] = useState([]);
+  const [images, setimages] = useState([]);
 
 
   // useEffect(() => {

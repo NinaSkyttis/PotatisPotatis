@@ -10,7 +10,7 @@ const pool = new Pool({
 
 
 router.get('/', async (req, res) => {
-  console.log('heyey')
+  // console.log('heyey')
   try {
     const result = await pool.query('SELECT * FROM public.recipes');
     // console.log(result.rows, '<--- this is the result');

@@ -83,12 +83,13 @@ const MyChapters = (props) => {
                     <div className="recipeAndEdit" key={recipe.recipeId}>
                       <li
                         id='hideRecipe'
+                        className="recipeListInChapter"
                         key={recipe.recipeId}
                         style={{display: editingRecipeId === recipe.recipeId ? 'none' : 'flex'}}
                       >
-
+                        <img src={recipe.image} alt="" />
                         <h4>{recipe.title}</h4>
-                        <a href={recipe.url}>{recipe.url}</a>
+                        <a style={{display: 'none'}} href={recipe.url}>{recipe.url}</a>
                         <div className="recipeButtons">
                           <button
                             className="edit"

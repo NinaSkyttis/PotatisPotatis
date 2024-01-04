@@ -117,6 +117,15 @@
   font-size: 16px;
 }
 
+#updateRecipe {
+.recipeListInChapter {
+  color: blue;
+  li {
+    flex-direction: row;
+  }
+}
+}
+
 .goBackEditRecipe {
   text-align: left;
   background: none;
@@ -149,11 +158,14 @@
 }
 
 .recipeListInChapter {
-  display: flex;
-  max-width: 80%;
-  list-style: none;
-  flex-wrap: wrap;
+    display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: stretch;
+      flex-direction: row;
 }
+
 
 .recipeListInChapter h4 {
   font-size: $h4-font-size;
@@ -161,17 +173,36 @@
 }
 
 .recipeListInChapter li {
-  display: flex;
-  flex-direction: column;
-  background: #FFF;
-  width: 200px;
-  height: 300px;
-  margin: 10px;
-  padding: 20px 20px;
-  word-wrap: break-word;
-  list-style: none;
-  justify-content: space-between;
-  box-shadow: $bos-shadow-div;
+    display: flex;
+    // flex-direction: column;
+    background: #FFF;
+    word-wrap: break-word;
+    list-style: none;
+    // justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    width: 300px;
+    height: 500px;
+    margin: 5px;
+}
+
+.recipeListInChapter img {
+  /* width: 250px; */
+    height: 350px !important;
+    width: 100%;
+    object-fit: cover;
+}
+
+.recipeListInChapter h4 {
+  padding: 5px;
+  margin-top: 20px;
+  margin: 15px 20px 0px 15px;
+  max-height: 82px;
+  overflow: hidden;
+}
+
+.recipeButtons a {
+  padding: 5px;
+  display: none !important;
 }
 
 .recipeButtons {
@@ -179,6 +210,8 @@
   justify-content: space-between;
   align-items:flex-end;
   bottom: 0;
+  // padding: 20 15px;
+  width: 90%;
 }
 
 .recipeButtons button {
@@ -189,6 +222,7 @@
   font-family: $primary-font;
   font-size: $button-font-size;
   font-weight: 200;
+  margin-bottom: 15px;
 }
 
 .edit {
