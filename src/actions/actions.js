@@ -89,6 +89,25 @@ export const updateRecipe = (recipeIdToEdit, title, url, chapterId) =>
     }
   };
 
+export const deleteRecipe = (recipeToDelete) => async (dispatch) => {
+  console.log('all good for now')
+  try {
+    await fetch(`/api/recipes/${recipeToDelete}`, {
+      method: 'DELETE',
+    });
+    await dispatch({
+      type: types.DELETE_RECIPE_SUCCESS,
+      payload: recipeToDelete,
+    });
+    dispatch(fetchCookbook());
+  } catch (error) {
+    dispatch({
+      type: types.DELETE_RECIPE_FAILURE,
+      payload: error.message,
+    });
+  }
+};
+
 export const fetchRecipes = () => async (dispatch) => {
   try {
     const response = await fetch('/api/recipes');

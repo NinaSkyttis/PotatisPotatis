@@ -66,4 +66,17 @@ RecipesController.updateRecipe = async (req, res, next) => {
   // }
 };
 
+RecipesController.deleteRecipe = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deleteLink = await pool.query('DELETE FROM recipes_in_chapters WHERE recipe_id = $1', [id]);
+    const deleted = await pool.query('DELETE FROM recipes WHERE _id = $1 RETURNING _id', [id]);
+    res.locals.delete = deleted;
+    console.log('recipe is successfully deleted', res.locals.delete);
+    return next();
+  } catch (error) {
+    console.error('Error executing query deleting recipe', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 module.exports = RecipesController;

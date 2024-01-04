@@ -9,6 +9,23 @@
   overflow: hidden;
 }
 
+
+.addRecipeButton {
+  background: none;
+  box-shadow: none;
+  border: none;
+  font-family: $primary-font;
+  font-size: 16px;
+  transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  &:hover {
+    // border-bottom: 1px solid black;
+    color: $peach-fuzz-dark;
+    letter-spacing: 0.02em;
+  }
+}
+
+
 .create {
   display: flex;
   justify-content: space-around;
@@ -48,12 +65,40 @@
 
 .createChapter {
   display: flex;
-  justify-content: flex-start;
-  padding-left: 50px;
+  // padding-left: 50px;
+  background: white;
+  width: 300px;
+  height: 200px;
+  margin: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
+.createChapter label {
+  font-size: $h3-font-size;
+  font-weight: $h3-font-weight;
+  margin: 10px;
+}
+
+.createChapter div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.createChapter input {
+  padding-left: 10px;
+    font-weight: 300;
+    padding: 6px 12px 6px 7px;
+    margin: 5px 0px;
+    // border: 0.5px solid gray;
+    font-size: 16px;
+    font-family: $primary-font;
+}
+
 .createRecipe {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding-right: 20px;
 }
 
@@ -68,8 +113,8 @@
 }
 .cookbookFlex {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 0px 20px;
 }
 
@@ -90,6 +135,7 @@
 
 .editRecipe {
   height: 100vh;
+  padding: 5px;
 }
 
 .editRecipe input {
@@ -97,7 +143,7 @@
 
 }
 
-.editRecipe #url {
+.editRecipe input {
   font-family: $primary-font;
   color: #333;
   border: 0.5px solid #ccc;
@@ -107,7 +153,7 @@
   font-size: 16px;
 }
 
-.editRecipe #title {
+.editRecipe input {
   font-family: $primary-font;
   color: #333;
   border: 0.5px solid #ccc;
@@ -126,12 +172,16 @@
 }
 }
 
+.editButton {
+  color: $white !important;
+}
+
 .goBackEditRecipe {
   text-align: left;
   background: none;
   border: none;
   height: 30px;
-  margin-bottom: 5px;
+  margin-top: 10px;
   font-family: $primary-font;
   font-size: 14px;
   transition: color 2s ease-out;
@@ -158,12 +208,12 @@
 }
 
 .recipeListInChapter {
-    display: flex;
-      list-style: none;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-content: stretch;
-      flex-direction: row;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+  align-content: stretch;
+  flex-direction: row;
 }
 
 
@@ -210,8 +260,8 @@
   justify-content: space-between;
   align-items:flex-end;
   bottom: 0;
-  // padding: 20 15px;
-  width: 90%;
+  padding: 0px 15px;
+  width: 100%;
 }
 
 .recipeButtons button {
@@ -228,6 +278,11 @@
 .edit {
   background: $peach-fuzz-dark;
   color: white;
+}
+
+#deleteButton {
+  text-align: center;
+  cursor: pointer;
 }
 
 .view {

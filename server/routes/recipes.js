@@ -30,6 +30,10 @@ router.patch('/:id', RecipesController.updateRecipe, (req, res) => {
   res.status(200).json(res.locals.updatedRecipe);
 });
 
+router.delete('/:id', RecipesController.deleteRecipe, (req, res) => {
+  res.status(200).json(res.locals.deletedRecipe);
+});
+
 // router.get('/', async (req, res) => {
 //   try {
 //     // Your existing code

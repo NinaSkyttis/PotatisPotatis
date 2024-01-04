@@ -7,9 +7,9 @@ import 'react-dropdown/style.css';
 const RecipeCreator = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const [image, setimage] = useState('');
+  const [image, setImage] = useState('');
   const [url, setUrl] = useState('');
-  const [chapterId, setchapterId] = useState('');
+  const [chapterId, setChapterId] = useState('');
   const {chapters} = useSelector((state) => state.potatis);
 
   const submitRecipe = async (event) => {
@@ -21,12 +21,13 @@ const RecipeCreator = (props) => {
     await dispatch(addRecipe(inputTitle.value, inputimage.value, inputUrl.value, chapterId));
 
     setTitle('');
+    setImage('');
     setUrl('');
-    setchapterId('');
+    setChapterId('');
   };
 
   const handleDropdownChange = (selectedOption) => {
-    setchapterId(selectedOption.value);
+    setChapterId(selectedOption.value);
   };
   // let newChapterOptions = chapterOptions.chapters;
   // console.log(chapterOptions, 'newChapterOptions');
@@ -49,7 +50,7 @@ const RecipeCreator = (props) => {
         <input
           id="image"
           value={image}
-          onChange={(e) => setimage(e.target.value)}
+          onChange={(e) => setImage(e.target.value)}
           placeholder="image"
           required
         />

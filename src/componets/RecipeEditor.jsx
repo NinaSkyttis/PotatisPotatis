@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import Dropdown from 'react-dropdown';
-import {updateRecipe} from '../actions/actions';
+import {updateRecipe, deleteRecipe} from '../actions/actions';
 import '../scss/_my_cookbook.scss';
 import 'react-dropdown/style.css';
 
@@ -9,8 +9,9 @@ const RecipeEditor = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
+  const [image, setImage] = useState('');
   const [foundRecipe, setFoundRecipe] = useState('');
-  const [chapterId, setchapterId] = useState('');
+  const [chapterId, setChapterId] = useState('');
   const {chapters} = useSelector((state) => state.potatis);
   const recipes = useSelector((state) => state.potatis.recipes);
   const recipeIdToEdit = useSelector((state) => state.potatis.editingRecipeId);
@@ -22,10 +23,25 @@ const RecipeEditor = (props) => {
     if (foundRecipe) {
       setFoundRecipe(foundRecipe);
       setTitle(foundRecipe.title);
+      setImage(foundRecipe.image);
       setUrl(foundRecipe.url);
-      setchapterId(foundRecipe.chapterId);
+      setChapterId(foundRecipe.chapterId);
     }
   }, [recipeIdToEdit, recipes]);
+
+  const deleteRecipeHandler = async (event) => {
+    // checking if recipeIdToEdit actually exists
+    if (!recipeIdToEdit) {
+      return;
+    }
+    // event.preventDefault();
+    await dispatch(deleteRecipe(recipeIdToEdit));
+
+    setTitle('');
+    setImage('');
+    setUrl('');
+    setChapterId('');
+  };
 
 
   const updateRecipeHandler = async (event) => {
@@ -38,15 +54,16 @@ const RecipeEditor = (props) => {
     // console.log('title, url, chapterId --> ', title, url, chapterId);
     // const inputTitle = document.getElementById('title');
     // const inputUrl = document.getElementById('url');
-    await dispatch(updateRecipe(recipeIdToEdit, title, url, chapterId));
+    await dispatch(updateRecipe(recipeIdToEdit, title, image, url, chapterId));
 
     setTitle('');
+    setImage('');
     setUrl('');
-    setchapterId('');
+    setChapterId('');
   };
 
   const handleDropdownChange = (selectedOption) => {
-    setchapterId(selectedOption.value);
+    setChapterId(selectedOption.value);
   };
   // let newChapterOptions = chapterOptions.chapters;
   // console.log(chapterOptions, 'newChapterOptions');
@@ -68,6 +85,13 @@ const RecipeEditor = (props) => {
           required
         />
         <input
+          id="image"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          placeholder="Link to Image"
+          required
+        />
+        <input
           id="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
@@ -85,7 +109,17 @@ const RecipeEditor = (props) => {
           placeholder="Select Chapter"
         />
 
-        <input className="button" type="submit" value="Update Recipe" />
+        <input
+          className="button editButton"
+          type="submit"
+          value="Update Recipe"
+        />
+        <input
+          type="button editButton"
+          value="Delete Recipe"
+          id="deleteButton"
+          onClick={() => deleteRecipeHandler()}
+        />
       </form>
     </div>
   );

@@ -11,8 +11,10 @@ $background-gradient: radial-gradient(farthest-side at bottom left, #f3cfb4, tra
     radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 400px);
 $primary-font: 'Josefin Sans', sans-serif;
 $primary-weight: 300;
-$h2-font-size: 36px;
 $h1-font-size: 48px;
+$h2-font-size: 36px;
+$h3-font-size: 22px;
+$h3-font-weight: 400;
 $h4-font-size: 24px;
 $h5-font-size: 18px;
 $button-font-size: 16px;
@@ -26,6 +28,7 @@ $button-padding: 15px 20px;
 $padding-between: 25px 0px;
 $input-padding: 10px 20px;
 $input-box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+$cursor: pointer;
 
 * {
   box-sizing: border-box;
@@ -58,7 +61,22 @@ form {
   width: 200px;
   font-family: $primary-font;
   font-size: 16px;
-  color: white;
+  color: $white;
+  cursor: $cursor;
+}
+
+.transition {
+      -webkit-transition: letter-spacing 1s ease-out;
+    
+      &:hover {
+        background-color: $peach-fuzz-medium;
+        transition: background-color 0.5s ease-in;
+        letter-spacing: 0.02em;
+      }
+    
+      &:focus {
+        background-color: $peach-fuzz;
+      }
 }
 
 .borderButton {
@@ -76,6 +94,7 @@ form {
   height: 10px;
   text-decoration: none;
   color: $black;
+  cursor: $cursor;
 }
 
 .goBackLink:hover {

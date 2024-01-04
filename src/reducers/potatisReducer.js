@@ -65,6 +65,13 @@ const potatisReducer = (state = initialState, action) => {
           },
         ],
       };
+    case types.DELETE_RECIPE_SUCCESS:
+      return {
+        ...state,
+        recipes: [
+          ...state.recipes.map((el) => el._id !== action.payload.recipeToDelete),
+        ],
+      };
     case types.FETCH_COOKBOOK_SUCCESS:
       return {
         ...state,
