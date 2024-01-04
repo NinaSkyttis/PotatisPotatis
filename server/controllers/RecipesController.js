@@ -7,8 +7,8 @@ const pool = new Pool({
 const RecipesController = {};
 
 RecipesController.addRecipe = async (req, res, next) => {
-  let {title, url, collectionId} = req.body;
-  collectionId = parseInt(collectionId);
+  let {title, url, chapterId} = req.body;
+  chapterId = parseInt(chapterId);
 
   try {
     // Insert into the recipe table
@@ -23,7 +23,7 @@ RecipesController.addRecipe = async (req, res, next) => {
     // Insert into the recipes_in_chapters table
     await pool.query(
         'INSERT INTO public.recipes_in_chapters (recipe_id, chapter_id) VALUES ($1, $2)',
-        [recipeId, collectionId],
+        [recipeId, chapterId],
     );
 
     res.locals.recipeId = recipeId;
@@ -35,17 +35,21 @@ RecipesController.addRecipe = async (req, res, next) => {
 };
 
 RecipesController.updateRecipe = async (req, res, next) => {
+  console.log('this is happening actually heheheh')
   const {id} = req.params;
-  const {title, url, chapter_id} = req.body;
-  console.log('chapter_id', chapter_id, 'id', id);
+  const {title, url, chapterId} = req.body;
+  console.log('chapter_id', chapterId, 'id', id, 'url', url, 'title', title);
   try {
+    // await pool.query('BEGIN');
     const updatedRecipe = await pool.query('UPDATE public.recipes SET title = $1, url = $2 WHERE _id = $3 RETURNING _id',
       [title, url, id]);
-    // const updatedRecipe = await pool.query('UPDATE public.recipes SET (title, url) VALUES ($1, $2) WHERE _id = $3 RETURNING _id',
-    //   [title, url, id],
-    // );
     const updatedChapterId = await pool.query('UPDATE public.recipes_in_chapters SET chapter_id = $1 WHERE recipe_id = $2 RETURNING chapter_id',
-      [chapter_id, id]);
+      [chapterId, id]);
+    // await pool.query('COMMIT');
+
+    console.log(updatedChapterId, 'updated CHAPTER_ID!!!')
+
+
     res.locals.updatedRecipe = {
       chapter_id: chapter_id,
       updatedRecipe: updatedRecipe,
@@ -53,9 +57,13 @@ RecipesController.updateRecipe = async (req, res, next) => {
     console.log('updatedRecipe', updatedRecipe);
     return next();
   } catch (error) {
+    await pool.query('ROLLBACK');
     console.error('Error executing query updating recipe', error);
     res.status(500).json({error: 'Internal Server Error'});
-  }
+  };
+  // finally {
+  //   await pool.release();
+  // }
 };
 
 module.exports = RecipesController;

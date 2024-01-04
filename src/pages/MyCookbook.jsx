@@ -34,7 +34,7 @@ const HomePage = () => {
         </div>
         <button className="button" onClick={(showCreateRecipe)}>Add Recipe</button>
       </div>
-      <div id="createChapter" className="createRecipe" style={{display: 'none'}}>
+      <div id="createChapter" className="createChapter" style={{display: 'none'}}>
         <ChapterCreator />
       </div>
       <div id="createRecipe" style={{display: 'none'}}>

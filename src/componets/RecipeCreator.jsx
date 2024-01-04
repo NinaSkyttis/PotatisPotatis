@@ -8,23 +8,23 @@ const RecipeCreator = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
-  const [collectionId, setCollectionId] = useState('');
+  const [chapterId, setchapterId] = useState('');
   const {chapters} = useSelector((state) => state.potatis);
 
   const submitRecipe = async (event) => {
     event.preventDefault();
-    // console.log('title, url, collectionId --> ', title, url, collectionId);
+    // console.log('title, url, chapterId --> ', title, url, chapterId);
     const inputTitle = document.getElementById('title');
     const inputUrl = document.getElementById('url');
-    await dispatch(addRecipe(inputTitle.value, inputUrl.value, collectionId));
+    await dispatch(addRecipe(inputTitle.value, inputUrl.value, chapterId));
 
     setTitle('');
     setUrl('');
-    setCollectionId('');
+    setchapterId('');
   };
 
   const handleDropdownChange = (selectedOption) => {
-    setCollectionId(selectedOption.value);
+    setchapterId(selectedOption.value);
   };
   // let newChapterOptions = chapterOptions.chapters;
   // console.log(chapterOptions, 'newChapterOptions');
@@ -52,13 +52,13 @@ const RecipeCreator = (props) => {
           required
         />
 
-        {/* Dropdown for collectionId */}
+        {/* Dropdown for chapterId */}
         <Dropdown
-          id="recipeCollectionId"
+          id="recipechapterId"
           options={chapterOptionsDropdown}
           onChange={handleDropdownChange}
           value={''}
-          selected={collectionId}
+          selected={chapterId}
           placeholder="Select Chapter"
         />
 

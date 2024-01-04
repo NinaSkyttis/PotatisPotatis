@@ -26,20 +26,20 @@ export const addChapter = (title) => async (dispatch) => {
   }
 };
 
-export const addRecipe = (title, url, collectionId) => async (dispatch) => {
+export const addRecipe = (title, url, chapterId) => async (dispatch) => {
   try {
     await fetch('/api/recipes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({title, url, collectionId}),
+      body: JSON.stringify({title, url, chapterId}),
     });
 
     const payload = {
       title,
       url,
-      collectionId,
+      chapterId,
     };
 
     await dispatch({
@@ -56,36 +56,37 @@ export const addRecipe = (title, url, collectionId) => async (dispatch) => {
   }
 };
 
-export const updateRecipe = () => async (recipeId, title, url, collectionId) => {
-  try {
-    await fetch('/api/recipes', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(title, url, collectionId),
-    });
+export const updateRecipe = (recipeIdToEdit, title, url, chapterId) =>
+  async (dispatch) => {
+    try {
+      await fetch(`/api/recipes/${recipeIdToEdit}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({title, url, chapterId}),
+      });
 
-    const payload = {
-      recipeId,
-      title,
-      url,
-      collectionId,
-    };
+      const payload = {
+        recipeIdToEdit,
+        title,
+        url,
+        chapterId,
+      };
 
-    await dispatch({
-      type: types.UPDATE_RECIPE_SUCCESS,
-      payload,
-    });
+      await dispatch({
+        type: types.UPDATE_RECIPE_SUCCESS,
+        payload,
+      });
 
-    dispatch(fetchCookbook());
-  } catch (error) {
-    dispatch({
-      type: types.UPDATE_RECIPE_FAILURE,
-      payload: error.message,
-    });
-  }
-};
+      dispatch(fetchCookbook());
+    } catch (error) {
+      dispatch({
+        type: types.UPDATE_RECIPE_FAILURE,
+        payload: error.message,
+      });
+    }
+  };
 
 export const fetchRecipes = () => async (dispatch) => {
   try {

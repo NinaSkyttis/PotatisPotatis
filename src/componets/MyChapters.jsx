@@ -3,13 +3,17 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
-import RecipeCreator from '../componets/RecipeCreator';
+import RecipeEditor from '../componets/RecipeEditor';
+import * as types from '../constants/actionTypes';
+import '../scss/_my_cookbook.scss';
 
 const MyChapters = (props) => {
   const dispatch = useDispatch();
   const {error, chapters, recipesInChapters, recipes} = useSelector((state) => state.potatis);
   const [editingRecipeId, setEditingRecipeId] = useState(null);
-  const [stopEditingRecipeId, setStopEditingRecipeId] = useState(null);
+  // const [stopEditingRecipeId, setStopEditingRecipeId] = useState(null);
+  const [count, setCount] = useState(0);
+  // const editingRecipeId = useSelector((state) => state.editingRecipeId);
 
   useEffect(() => {
     dispatch(fetchCookbook());
@@ -27,11 +31,8 @@ const MyChapters = (props) => {
 
   recipesInChapters.forEach((recipeInChapter) => {
     const {chapterIdInChapters, recipeIdInChapters} = recipeInChapter;
-
     const chapter = chapterObj[chapterIdInChapters];
-
     const recipe = recipes.find((recipe) => recipe.recipeId === parseInt(recipeIdInChapters, 10));
-
     if (chapter && recipe) {
       chapter.recipes.push(recipe);
     }
@@ -43,31 +44,26 @@ const MyChapters = (props) => {
     chapterArr.push(chapterObj[key]);
   }
 
-  console.log('chapteArr: ', chapterArr);
-
   useEffect(() => {
     dispatch(fetchCookbook());
   }, [dispatch]);
 
-  // const showUpdateRecipe = () => {
-  //   const x = document.getElementById('updateRecipe');
-  //   const y = document.getElementById('hideRecipe');
-  //   console.log('this is x', x);
-  //   if (x.style.display === 'none') {
-  //     x.style.display = 'block';
-  //     y.style.display = 'none';
-  //   } else {
-  //     x.style.display = 'none';
-  //     y.style.display = 'block';
-  //   }
-  // };
-
   const showUpdateRecipe = (recipeId) => {
-    setEditingRecipeId(recipeId);
-  };
+    if (count % 2 === 0) {
+      setEditingRecipeId(recipeId);
 
-  const doneUpdateRecipe = (recipeId) => {
-    setStopEditingRecipeId(recipeId);
+      dispatch({
+        type: types.START_EDIT_RECIPE,
+        payload: recipeId,
+      });
+
+      console.log('after setEditingRecipeId: count is', count, 'and recipeId is', recipeId);
+    } else {
+      setEditingRecipeId(null);
+      console.log('after setEditingRecipeId: count is', count, 'and recipeId is', recipeId);
+      setCount(0);
+    }
+    setCount(count + 1);
   };
 
   return (
@@ -84,11 +80,11 @@ const MyChapters = (props) => {
                 </div>
                 <ul className="recipeListInChapter">
                   {item.recipes.map((recipe) => (
-                    <>
+                    <div className="recipeAndEdit" key={recipe.recipeId}>
                       <li
                         id='hideRecipe'
                         key={recipe.recipeId}
-                        style={{display: editingRecipeId === recipe.recipeId ? 'none' : 'block'}}
+                        style={{display: editingRecipeId === recipe.recipeId ? 'none' : 'flex'}}
                       >
 
                         <h4>{recipe.title}</h4>
@@ -99,7 +95,6 @@ const MyChapters = (props) => {
                             id={recipe.recipeId}
                             onClick={() => {
                               showUpdateRecipe(recipe.recipeId);
-                              doneUpdateRecipe(null);
                             }}>
                             edit
                           </button>
@@ -110,17 +105,18 @@ const MyChapters = (props) => {
                         </div>
                       </li>
                       {editingRecipeId === recipe.recipeId && (
-                        <div id="updateRecipe" style={{display: stopEditingRecipeId === recipe.recipeId ? 'none' : 'block'}}>
-                          <button onClick={
-                            () => {
-                              doneUpdateRecipe(recipe.recipeId);
-                              showUpdateRecipe(null);
-                            }
-                          }>Go back</button>
-                          <RecipeCreator />
+                        <div id="updateRecipe" style={{display: editingRecipeId === null ? 'none' : 'flex'}}>
+                          <li className="recipeListInChapter">
+                            <button className="goBackEditRecipe" onClick={
+                              () => {
+                                showUpdateRecipe();
+                              }
+                            }>Go back</button>
+                            <RecipeEditor />
+                          </li>
                         </div>
                       )}
-                    </>
+                    </div>
                   ))}
                 </ul>
               </li>

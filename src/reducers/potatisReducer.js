@@ -6,7 +6,7 @@ const initialState = {
   totalCollections: 0,
   totalChapters: 0,
   chapters: [],
-  recipeList: [],
+  // recipeList: [],
   recipesInChapters: [],
   recipes: [],
   editingRecipeId: null,
@@ -38,15 +38,15 @@ const potatisReducer = (state = initialState, action) => {
           {
             title: action.payload.title,
             url: action.payload.url,
-            collectionId: action.payload.collectionId,
+            chapterId: action.payload.chapterId,
           },
         ],
       };
     case types.START_EDIT_RECIPE:
       return {
         ...state,
-        editingRecipeId: action.payload.recipeId,
-      }
+        editingRecipeId: action.payload,
+      };
     case types.STOP_EDIT_RECIPE:
       return {
         ...state,
@@ -56,11 +56,11 @@ const potatisReducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: [
-          ...state.recipes,
+          ...state.recipes.filter((el) => el._id === action.payload.recipeId),
           {
             title: action.payload.title,
             url: action.payload.url,
-            collectionId: action.payload.collectionId,
+            chapterId: action.payload.chapterId,
           },
         ],
       };

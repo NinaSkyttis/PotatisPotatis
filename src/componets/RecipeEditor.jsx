@@ -1,30 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from 'react-dropdown';
-import { addRecipe } from '../actions/actions';
+import {updateRecipe} from '../actions/actions';
+import '../scss/_my_cookbook.scss';
 import 'react-dropdown/style.css';
 
-const RecipeCreator = (props) => {
+const RecipeEditor = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
-  const [collectionId, setCollectionId] = useState('');
-  const { chapters } = useSelector((state) => state.potatis);
+  const [foundRecipe, setFoundRecipe] = useState('');
+  const [chapterId, setchapterId] = useState('');
+  const {chapters} = useSelector((state) => state.potatis);
+  const recipes = useSelector((state) => state.potatis.recipes);
+  const recipeIdToEdit = useSelector((state) => state.potatis.editingRecipeId);
+  // console.log(recipe, 'recipe in updateRecipe');
+  console.log(recipeIdToEdit, 'recipeIdToEdit');
 
-  const updateRecipe = async (event) => {
+  useEffect(() => {
+    const foundRecipe = recipes.find((el) => el.recipeId === recipeIdToEdit);
+    if (foundRecipe) {
+      setFoundRecipe(foundRecipe);
+      setTitle(foundRecipe.title);
+      setUrl(foundRecipe.url);
+      setchapterId(foundRecipe.chapterId);
+    }
+  }, [recipeIdToEdit, recipes]);
+
+
+  const updateRecipeHandler = async (event) => {
     event.preventDefault();
-    // console.log('title, url, collectionId --> ', title, url, collectionId);
-    const inputTitle = document.getElementById('title');
-    const inputUrl = document.getElementById('url');
-    await dispatch(updateRecipe(inputTitle.value, inputUrl.value, collectionId));
+
+    if (!chapterId) {
+      alert('Please select a chapter');
+      return;
+    }
+    // console.log('title, url, chapterId --> ', title, url, chapterId);
+    // const inputTitle = document.getElementById('title');
+    // const inputUrl = document.getElementById('url');
+    await dispatch(updateRecipe(recipeIdToEdit, title, url, chapterId));
 
     setTitle('');
     setUrl('');
-    setCollectionId('');
+    setchapterId('');
   };
 
   const handleDropdownChange = (selectedOption) => {
-    setCollectionId(selectedOption.value);
+    setchapterId(selectedOption.value);
   };
   // let newChapterOptions = chapterOptions.chapters;
   // console.log(chapterOptions, 'newChapterOptions');
@@ -35,8 +57,9 @@ const RecipeCreator = (props) => {
   }));
 
   return (
-    <div className="createRecipe">
-      <form onSubmit={updateRecipe}>
+    <div className="editRecipe">
+      <form className="editRecipe" onSubmit={updateRecipeHandler}>
+        {/* <label htmlFor="title">{}</label> */}
         <input
           id="title"
           value={title}
@@ -52,20 +75,20 @@ const RecipeCreator = (props) => {
           required
         />
 
-        {/* Dropdown for collectionId */}
+        {/* Dropdown for chapterId */}
         <Dropdown
-          id="recipeCollectionId"
+          id="editChapterId"
           options={chapterOptionsDropdown}
           onChange={handleDropdownChange}
           value={''}
-          selected={collectionId}
+          selected={chapterId}
           placeholder="Select Chapter"
         />
 
-        <input className="button" type="submit" value="Add Recipe" />
+        <input className="button" type="submit" value="Update Recipe" />
       </form>
     </div>
   );
 };
 
-export default RecipeCreator;
+export default RecipeEditor;
