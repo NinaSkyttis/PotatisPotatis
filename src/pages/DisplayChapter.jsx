@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
 import {useParams} from 'react-router-dom';
-import '.././index.scss';
+// import '.././index.scss';
 
 const DisplayChapter = () => {
   const {chapterId} = useParams();
@@ -49,14 +49,14 @@ const DisplayChapter = () => {
   console.log(chapter, 'chapter')
 
   return (
-    <div>
+    <div className="myCookbook myCookBookChapter">
       {chapter && <h1>{chapter.title}</h1>}
       <ul className="recipeListInChapter" >
         {
           finalRecipes && finalRecipes.map((recipe) => (
             <li className="recipeListInChapter" key={recipe.recipeId} >
               <img src={recipe.image} alt="" />
-              <h2>{recipe.title}</h2>
+              <h4>{recipe.title}</h4>
             </li>
           ))
         }

@@ -7,6 +7,7 @@ $peach-fuzz-medium: #E2AE89;
 $peach-fuzz-dark: #B35A41;
 $peach-fuzz-half-transparent: #f3cfb461;
 $background: #fbfbfb;
+$temp-background: #f3cfb46e;
 $christmas-red: #D93000;
 $background-gradient: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
     radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 400px);
@@ -38,9 +39,9 @@ $cursor: pointer;
 
 body {
   color: $black;
-  // background: $background;
-  background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
-    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1600px) !important;
+  background: $temp-background;
+  // background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
+  //   radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1600px) !important;
   background-size: 100% 100% !important;
   background-repeat: no-repeat !important;
   display: flex !important;
@@ -142,5 +143,6 @@ form {
 
 h1 {
   margin-top: 50px;
+  margin-left: 50px;
 }
 
