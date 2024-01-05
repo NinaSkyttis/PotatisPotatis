@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
 import {useParams} from 'react-router-dom';
+
 // import '.././index.scss';
 
 const DisplayChapter = () => {
@@ -25,7 +26,7 @@ const DisplayChapter = () => {
       // console.log(typeof chapterId === 'string');
       // console.log(typeof chapter._id === 'string');
       if (chapter._id === parseInt(chapterId, 10)) {
-        console.log('found!')
+        console.log('found!');
         setChapter(chapter);
       }
     });
@@ -34,6 +35,10 @@ const DisplayChapter = () => {
         recipeIdArr.push(recipe.recipeIdInChapters);
       }
     });
+
+    useEffect(() => {
+      dispatch(fetchDataFromApi());
+    }, [dispatch]);
 
     const finalRecipeArr = [];
 
@@ -46,7 +51,7 @@ const DisplayChapter = () => {
   }, [chapters, recipesInChapters, recipes]);
 
   console.log(finalRecipes, 'finale');
-  console.log(chapter, 'chapter')
+  console.log(chapter, 'chapter');
 
   return (
     <div className="myCookbook myCookBookChapter">

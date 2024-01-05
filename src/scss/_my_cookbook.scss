@@ -156,6 +156,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   font-weight: 600;
   font-size: $h5-font-size;
   margin-top: 10px;
+  text-decoration: none;
 }
 
 .editRecipe {
@@ -199,14 +200,6 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 
 .editButton {
   color: $white !important;
-    transition: all 0.25s ease-out;
-      -webkit-transition: all 0.25s ease-out;
-    
-      &:hover {
-        // border-bottom: 1px solid black;
-        color: $peach-fuzz-dark;
-        letter-spacing: 0.02em;
-      }
 }
 
 .goBackEditRecipe {

@@ -1,0 +1,17 @@
+@import '../index.scss';
+
+.displayRecipeImg {
+  width: 600px;
+}
+
+.displayRecipeCard {
+  display:flex;
+  flex-direction: column;
+  background: $white;
+  align-items: center;
+}
+
+.displayRecipeh1 {
+  padding: none;
+  margin: 20px 0px;
+}

@@ -74,17 +74,19 @@ form {
   -webkit-transition: all 0.25s ease-out;
     &:hover {
       // border-bottom: 1px solid black;
-      transform:scale(1.02);
+      transform: scale(1.02);
     }
 }
 
 .transition {
-      -webkit-transition: letter-spacing 1s ease-out;
+      -webkit-transition: all 1s ease-out;
+      transition: all 1s ease-out;
     
       &:hover {
-        background-color: $peach-fuzz-medium;
-        transition: background-color 0.5s ease-in;
-        letter-spacing: 0.02em;
+        // background-color: $peach-fuzz-medium;
+        // transition: background-color 0.5s ease-in;
+        // letter-spacing: 0.02em;
+        transform: scale(1.02);
       }
     
       &:focus {

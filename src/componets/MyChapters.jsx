@@ -81,8 +81,8 @@ const MyChapters = (props) => {
               <li key={item.chapterId}>
                 <div className="chapter">
                   <h2>{item.title}</h2>
-                  <Link to={`/my-cookbook/chapters/${item.chapterId}`}>
-                    Go to chapter
+                  <Link className="transition" to={`/my-cookbook/chapters/${item.chapterId}`}>
+                    go to chapter
                   </Link>
                 </div>
                 <ul className="recipeListInChapter">
@@ -94,7 +94,13 @@ const MyChapters = (props) => {
                         key={recipe.recipeId}
                         style={{display: editingRecipeId === recipe.recipeId ? 'none' : 'flex'}}
                       >
-                        <img src={recipe.image} alt="" />
+                        <Link
+                          style={{width: '100%'}}
+                          key={recipe.recipeId}
+                          to={`/my-cookbook/chapters/${item.chapterId}/${recipe.recipeId}`}
+                        >
+                          <img src={recipe.image} alt="" />
+                        </Link>
                         <h4>{recipe.title}</h4>
                         <a style={{display: 'none'}} href={recipe.url}>{recipe.url}</a>
                         <div className="recipeButtons">
@@ -106,9 +112,8 @@ const MyChapters = (props) => {
                             }}>
                             edit
                           </button>
-                          <button
-                            className="view">
-                              view
+                          <button className="view">
+                            view
                           </button>
                         </div>
                       </li>
