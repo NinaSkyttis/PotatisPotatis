@@ -44,11 +44,7 @@ const Navigation = () => {
 
 const App = () => {
   return (
-    <div>
-      {/* <HashRouter> */}
-        <Navigation />
-      {/* </HashRouter> */}
-    </div>
+    <Navigation/>
   );
 };
 

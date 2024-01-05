@@ -36,9 +36,9 @@ const DisplayChapter = () => {
       }
     });
 
-    useEffect(() => {
-      dispatch(fetchDataFromApi());
-    }, [dispatch]);
+    // useEffect(() => {
+    //   dispatch(fetchDataFromApi());
+    // }, [dispatch]);
 
     const finalRecipeArr = [];
 

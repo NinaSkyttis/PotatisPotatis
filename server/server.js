@@ -15,7 +15,6 @@ const pool = new Pool({
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static('dist'));
 
 app.use((req, res, next) => {
   console.log(`Received request: ${req.method} ${req.url}`);
@@ -24,9 +23,13 @@ app.use((req, res, next) => {
 // Importing routes
 const chaptersRouter = require('./routes/chapters');
 const recipesRouter = require('./routes/recipes');
+const recipesDataRouter = require('./routes/getRecipeData');
 
 app.use('/api/chapters', chaptersRouter);
 app.use('/api/recipes', recipesRouter);
+app.use('/api/getRecipeData', recipesDataRouter);
+
+app.use(express.static('dist'));
 
 app.get('*', (req, res) => {
   console.log('Requested URL:', req.url);
