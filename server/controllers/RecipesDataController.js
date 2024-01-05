@@ -20,7 +20,7 @@ RecipesDataController.getData = async (req, res, next) => {
     if (response.status >= 200 && response.status < 300) {
       html = response.data;
       const $ = cheerio.load(html);
-      $('ul:contains("Tbsp") > li', html).each(function() {
+      $('ul:contains("tsp"):first > li', html).each(function() {
         const list = $(this).text();
         newList.push(list);
       });
