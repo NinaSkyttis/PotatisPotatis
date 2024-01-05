@@ -57,7 +57,7 @@ export const addRecipe = (title, image, url, chapterId) => async (dispatch) => {
   }
 };
 
-export const updateRecipe = (recipeIdToEdit, title, url, chapterId) =>
+export const updateRecipe = (recipeIdToEdit, title, image, url, chapterId) =>
   async (dispatch) => {
     try {
       await fetch(`/api/recipes/${recipeIdToEdit}`, {
@@ -65,12 +65,13 @@ export const updateRecipe = (recipeIdToEdit, title, url, chapterId) =>
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({title, url, chapterId}),
+        body: JSON.stringify({title, image, url, chapterId}),
       });
 
       const payload = {
         recipeIdToEdit,
         title,
+        image,
         url,
         chapterId,
       };
@@ -144,6 +145,14 @@ export const fetchCookbook = () => async (dispatch) => {
     });
   }
 };
+
+export const updateRecipesToDisplay = (chapterId, recipes) => ({
+  type: types.UPDATE_RECIPES_TO_DISPLAY,
+  payload: {
+    chapterId,
+    recipes,
+  },
+});
 
 export const startEditingRecipe = (recipeId) => ({
   type: 'START_EDIT_RECIPE',

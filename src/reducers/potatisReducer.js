@@ -8,6 +8,7 @@ const initialState = {
   chapters: [],
   // recipeList: [],
   recipesInChapters: [],
+  recipesToDisplay: {},
   recipes: [],
   editingRecipeId: null,
   lastChapterId: 0,
@@ -95,6 +96,15 @@ const potatisReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case types.UPDATE_RECIPES_TO_DISPLAY:
+      return {
+        ...state,
+        recipesToDisplay: {
+          ...state.recipesToDisplay,
+          chapterId: action.payload.chapterId,
+          recipes: action.payload.recipes,
+        },
       };
     default:
       return state;

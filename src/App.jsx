@@ -6,6 +6,7 @@ import MyCookbook from './pages/MyCookbook';
 import Inspiration from './pages/Inspiration';
 import WelcomePage from './pages/WelcomePage';
 import LoginSignupPage from './pages/loginSignupPage';
+import DisplayChapter from './pages/DisplayChapter';
 // import MyChapters from './componets/MyChapters';
 import Navbar from './componets/Navbar';
 import Footer from './componets/Footer';
@@ -27,6 +28,7 @@ const Navigation = () => {
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/my-cookbook" element={<MyCookbook />} />
+        <Route path="/my-cookbook/chapters/:chapterId" element={<DisplayChapter />} />
         <Route path="/homepage" element={<WelcomePage/>} />
         <Route path="/inspiration" element={<Inspiration/>} />
         <Route path="/welcome-page" element={<WelcomePage />} />

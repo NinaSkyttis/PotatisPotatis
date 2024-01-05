@@ -1,7 +1,12 @@
 @import '../index.scss';
 
 
-
+.nav li {
+  transition: all 0.25s ease-out;
+  &:hover {
+    transform: scale(1.02);
+  }
+}
 .loginSignupStyle {
   display: flex;
   // justify-content: center;
@@ -16,7 +21,7 @@
 .backgroundStyle {
   position: absolute;
   background: $peach-fuzz-medium;
-  width: 1100px;
+  width: 800px;
   height: 580px;
   z-index: 1;
   top: 0;
@@ -28,7 +33,7 @@
   align-items: flex-start;
   // padding: 15px 30px;
   box-shadow: $bos-shadow-div;
-  border-radius: 8px;
+  border-radius: $border-radius-login;
 }
 
 .backgroundStyle h1 {
@@ -45,12 +50,12 @@
   background: $white;
   position: relative;
   top: -20px;
-  right: -100px;
+  right: -6px;
   width: 700px;
   height: 615px;
   z-index: 2;
   box-shadow: $bos-shadow-div;
-  border-radius: $border-radius;
+  border-radius: $border-radius-login;
 }
 
 .loginSignupForm img {

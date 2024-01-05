@@ -12,7 +12,7 @@ const HomePage = () => {
     const x = document.getElementById('createChapter');
     console.log('this is x', x);
     if (x.style.display === 'none') {
-      x.style.display = 'block';
+      x.style.display = 'flex';
     } else {
       x.style.display = 'none';
     }
@@ -21,7 +21,7 @@ const HomePage = () => {
     const x = document.getElementById('createRecipe');
     console.log('this is x', x);
     if (x.style.display === 'none') {
-      x.style.display = 'block';
+      x.style.display = 'flex';
     } else {
       x.style.display = 'none';
     }
@@ -32,7 +32,7 @@ const HomePage = () => {
         <div className="cookbookHeader">
           <h2>MY CHAPTERS</h2><button onClick={showCreateChapter}>+</button>
         </div>
-        <button className="addRecipeButton" onClick={(showCreateRecipe)}>Add Recipe</button>
+        <button className="addRecipeButton" onClick={(showCreateRecipe)}>add recipe</button>
       </div>
       <div id="createChapter" className="createChapter" style={{display: 'none'}}>
         <ChapterCreator />

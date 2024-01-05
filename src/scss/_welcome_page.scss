@@ -1,5 +1,12 @@
 @import '../index.scss';
 
+
+.welcomeBackground {
+  background: white;
+  border-top-left-radius: $border-radius-login;
+  border-top-right-radius: $border-radius-login;
+  margin: 25px;
+}
 .elevatorPitch {
  max-width: 800px;
  font-size: $h2-font-size;
@@ -21,7 +28,6 @@
   justify-content: space-around;
   padding: $div-padding;
   background: $white;
-  border-radius: $border-radius;
   box-shadow: $bos-shadow-div;
 }
 
@@ -34,6 +40,8 @@
   justify-content: space-around;
   padding: $padding-between;
   background: $white;
+    border-bottom-left-radius: $border-radius-login;
+      border-bottom-right-radius: $border-radius-login;
   box-shadow: $bos-shadow-div;
     div {
       background: $peach-fuzz-dark;

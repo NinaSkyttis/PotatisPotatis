@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
 import RecipeEditor from '../componets/RecipeEditor';
+import {Link, useParams} from 'react-router-dom';
 import * as types from '../constants/actionTypes';
 import '../scss/_my_cookbook.scss';
 
@@ -11,13 +12,17 @@ const MyChapters = (props) => {
   const dispatch = useDispatch();
   const {error, chapters, recipesInChapters, recipes} = useSelector((state) => state.potatis);
   const [editingRecipeId, setEditingRecipeId] = useState(null);
+  const {chapterId} = useParams();
+
   // const [stopEditingRecipeId, setStopEditingRecipeId] = useState(null);
+  // const [chapter, setChapter] = useState(null);
   const [count, setCount] = useState(0);
   // const editingRecipeId = useSelector((state) => state.editingRecipeId);
 
   useEffect(() => {
     dispatch(fetchCookbook());
   }, [dispatch]);
+
 
   const chapterObj = {};
 
@@ -76,7 +81,9 @@ const MyChapters = (props) => {
               <li key={item.chapterId}>
                 <div className="chapter">
                   <h2>{item.title}</h2>
-                  <a>Go to chapter</a>
+                  <Link to={`/my-cookbook/chapters/${item.chapterId}`}>
+                    Go to chapter
+                  </Link>
                 </div>
                 <ul className="recipeListInChapter">
                   {item.recipes.map((recipe) => (
@@ -101,7 +108,7 @@ const MyChapters = (props) => {
                           </button>
                           <button
                             className="view">
-                            view
+                              view
                           </button>
                         </div>
                       </li>

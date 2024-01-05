@@ -37,12 +37,13 @@ RecipesController.addRecipe = async (req, res, next) => {
 RecipesController.updateRecipe = async (req, res, next) => {
   console.log('this is happening actually heheheh')
   const {id} = req.params;
-  const {title, url, chapterId} = req.body;
-  console.log('chapter_id', chapterId, 'id', id, 'url', url, 'title', title);
+  const {title, image, url, chapterId} = req.body;
+  console.log(chapterId, '<-- chapterId', 
+  id, '<--- id', image, '<--image', url, '<-- url ', title, '<--title');
   try {
     // await pool.query('BEGIN');
-    const updatedRecipe = await pool.query('UPDATE public.recipes SET title = $1, url = $2 WHERE _id = $3 RETURNING _id',
-      [title, url, id]);
+    const updatedRecipe = await pool.query('UPDATE public.recipes SET title = $1, image = $2, url = $3 WHERE _id = $4 RETURNING _id',
+      [title, image, url, id]);
     const updatedChapterId = await pool.query('UPDATE public.recipes_in_chapters SET chapter_id = $1 WHERE recipe_id = $2 RETURNING chapter_id',
       [chapterId, id]);
     // await pool.query('COMMIT');

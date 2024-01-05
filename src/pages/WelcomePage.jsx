@@ -4,7 +4,7 @@ import homepageImg from '../img/homepage-img.jpg';
 import '../scss/_welcome_page.scss';
 const Welcomepage = () => {
   return (
-    <>
+    <div className="welcomeBackground">
       <div className="centerDiv">
         <section className="elevatorPitch">
         Revolutionize your cooking experience—effortlessly
@@ -38,7 +38,7 @@ const Welcomepage = () => {
           <h3>Share recipes and collections with friends and family</h3>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

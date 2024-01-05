@@ -40,6 +40,7 @@ const RecipeCreator = (props) => {
   return (
     <div className="createRecipe">
       <form onSubmit={submitRecipe}>
+        <label htmlFor="title">add new recipe</label>
         <input
           id="title"
           value={title}
@@ -72,7 +73,7 @@ const RecipeCreator = (props) => {
           placeholder="Select Chapter"
         />
 
-        <input className="button" type="submit" value="Add Recipe" />
+        <input className="button" type="submit" value="add recipe" />
       </form>
     </div>
   );

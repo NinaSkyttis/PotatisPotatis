@@ -5,6 +5,7 @@ $white: #FFF;
 $peach-fuzz: #F3CFB4;
 $peach-fuzz-medium: #E2AE89;
 $peach-fuzz-dark: #B35A41;
+$peach-fuzz-half-transparent: #f3cfb461;
 $background: #fbfbfb;
 $christmas-red: #D93000;
 $background-gradient: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
@@ -19,11 +20,12 @@ $h4-font-size: 24px;
 $h5-font-size: 18px;
 $button-font-size: 16px;
 $div-padding: 20px;
-$border-radius: 6px;
+$border-radius: 0px;
+$border-radius-login: 8px;
 $bos-shadow-div: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
 rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;;
 $left-div-padding: 30px;
-$button-border-radius: 4px;
+$button-border-radius: 0px;
 $button-padding: 15px 20px;
 $padding-between: 25px 0px;
 $input-padding: 10px 20px;
@@ -36,13 +38,17 @@ $cursor: pointer;
 
 body {
   color: $black;
-  background: $background;
+  // background: $background;
+  background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
+    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1600px) !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
   display: flex !important;
   flex-direction: column;
   align-items: center;
   font-family: $primary-font;
   font-weight: $primary-weight;
-  height: 100vh;
+  // height: 100vh;
   width: 100%;
   margin: 0px;
 }
@@ -63,6 +69,12 @@ form {
   font-size: 16px;
   color: $white;
   cursor: $cursor;
+  transition: all 0.25s ease-out;
+  -webkit-transition: all 0.25s ease-out;
+    &:hover {
+      // border-bottom: 1px solid black;
+      transform:scale(1.02);
+    }
 }
 
 .transition {
@@ -115,10 +127,10 @@ form {
 .centerDiv {
   display: flex;
   justify-content: center;
-  background: $white;
+  // background: $white;
   padding: $div-padding;
   border-radius: $border-radius;
-  box-shadow: $bos-shadow-div;
+  // box-shadow: $bos-shadow-div;
 }
 
 .leftDiv {
@@ -126,5 +138,9 @@ form {
   flex-direction: column;
   padding: $left-div-padding;
   justify-content: center;
+}
+
+h1 {
+  margin-top: 50px;
 }
 

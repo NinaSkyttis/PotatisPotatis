@@ -26,7 +26,6 @@ router.post('/', RecipesController.addRecipe, (req, res) => {
 });
 
 router.patch('/:id', RecipesController.updateRecipe, (req, res) => {
-  console.log('hola')
   res.status(200).json(res.locals.updatedRecipe);
 });
 
