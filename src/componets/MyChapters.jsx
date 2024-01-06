@@ -79,7 +79,7 @@ const MyChapters = (props) => {
                 <div className="chapter">
                   <h2>{item.title}</h2>
                   <Link className="transition" to={`/my-cookbook/chapters/${item.chapterId}`}>
-                    go to chapter
+                    Go to chapter
                   </Link>
                 </div>
                 <ul className="recipeListInChapter">
@@ -107,10 +107,10 @@ const MyChapters = (props) => {
                             onClick={() => {
                               showUpdateRecipe(recipe.recipeId);
                             }}>
-                            edit
+                            Edit
                           </button>
                           <button className="view">
-                            share
+                            Share
                           </button>
                         </div>
                       </li>

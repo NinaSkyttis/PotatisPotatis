@@ -79,7 +79,7 @@ const potatisReducer = (state = initialState, action) => {
         ...state,
         chapters: action.payload.chapters.map((chapter) => ({
           _id: chapter._id,
-          title: chapter.title.toLowerCase(),
+          title: chapter.title,
         })),
         recipesInChapters: action.payload.recipesInChapters.map((chapARec) => ({
           chapterIdInChapters: chapARec.chapter_id,
@@ -88,7 +88,7 @@ const potatisReducer = (state = initialState, action) => {
         recipes: action.payload.recipes.map((recipe) => ({
           recipeId: recipe._id,
           image: recipe.image,
-          title: recipe.title.toLowerCase(),
+          title: recipe.title,
           url: recipe.url,
           comments: recipe.comments,
         })),

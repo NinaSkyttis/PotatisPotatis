@@ -10,6 +10,7 @@
      display: flex;
      list-style: none;
      margin: 0px;
+     align-items: center;
     }
 
     li {
@@ -26,8 +27,65 @@
     height: 70px;
     padding: 10px;
    }
+   input {
+    padding: 5px;
+    font-size: 18px;
+    font-family: $primary-font;
+    font-weight: 300;
+    outline:none;
+    transition: all 0.25s ease-out;
+    &:focus {
+        border: 1px solid $peach-fuzz;
+    }
+   }
 }
 
+.searchButton {
+    background: none;
+    border: none;
+    // margin: none;
+    // padding: none;
+    font-family: $primary-font;
+    font-weight: 300;
+    font-size: 24px;
+}
+
+.search li {
+    padding: 0px !important;
+    margin: 0px;
+    form {
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+// #searchInput {
+//     margin-right: 0px !important;
+// }
+
+// #search {
+//     padding-right: 0px;
+//     font-family: $primary-font;
+//     font-size: 14px;
+//     outline: $peach-fuzz-dark;
+    
+// }
+.searchLiInput {
+    // padding-right: 0px !important;
+    transition: all 0.2s ease-out;
+
+}
+
+#searchLiButton {
+    // padding-left: 0px !important;
+}
+
+
+#searchButton{
+    // padding-left: 0px !important;
+    // margin-left: 0px !important;
+    transition: all 0.2s ease-out;
+}
 .navbar {
     // border-bottom: 0.5px solid black;
     // box-shadow: rgba(177, 176, 176, 0.725) 0px 2px 0px 0px;
@@ -51,7 +109,7 @@
     right: 0;   
 
     ul {
-        border-top: 0.5px solid black;
+        // border-top: 0.5px solid black;
         padding: 0px;
         li {
             padding: 10px;

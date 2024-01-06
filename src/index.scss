@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1;0,100;0,200;0,300;0,400;0,600;0,700;1,1;1,100;1,200;1,300;1,400&display=swap');
+
 
 $black: #000;
 $white: #FFF;
@@ -41,7 +44,7 @@ body {
   color: $black;
   // background: $white;
   background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
-    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1400px) !important;
+    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1800px) !important;
   background-size: 100% 100% !important;
   background-repeat: no-repeat !important;
   display: flex !important;
@@ -64,7 +67,7 @@ form {
   padding: $button-padding;
   background: $peach-fuzz-dark;
   border: none;
-  border-radius: 6px;
+  border-radius: $border-radius;
   width: 200px;
   font-family: $primary-font;
   font-size: 16px;

@@ -105,9 +105,9 @@ const RecipeEditor = (props) => {
         />
         <input
           id="comments"
-          defaultValue={comments.toLowerCase()}
+          defaultValue={comments}
           onChange={(e) => setComments(e.target.value)}
-          placeholder="comments"
+          placeholder="Comments"
           required
         />
 
@@ -118,17 +118,17 @@ const RecipeEditor = (props) => {
           onChange={handleDropdownChange}
           value={''}
           selected={chapterId}
-          placeholder="select chapter"
+          placeholder="Select Chapter"
         />
 
         <input
           className="button editButton"
           type="submit"
-          value="update recipe"
+          value="Update Recipe"
         />
         <input
           type="button editButton"
-          value="delete recipe"
+          value="Delete Recipe"
           id="deleteButton"
           onClick={() => deleteRecipeHandler()}
         />

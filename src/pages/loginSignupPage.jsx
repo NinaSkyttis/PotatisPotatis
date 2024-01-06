@@ -7,7 +7,7 @@ const LoginSignupPage = () => {
   return (
     <>
       <div className="loginSignupStyle">
-        <Link to="/welcome-page" className="goBackLink">
+        <Link to="/my-cookbook" className="goBackLink">
           <i className="arrow left"></i>
           Go back
         </Link>
@@ -19,11 +19,11 @@ const LoginSignupPage = () => {
               {/* <input type="text" name="fullName" placeholder="Full Name"
                 required/> */}
               <input type="text" name="emailAddress"
-                placeholder="username" required/>
-              <input type="password" name="password" placeholder="password" />
+                placeholder="Username" required/>
+              <input type="password" name="password" placeholder="Password" />
               <Link to="/my-cookbook" ><input className="formButton" type="submit"
-                value="log in" /></Link>
-              <h5>don't have an account? <a href="">sign up</a></h5>
+                value="Log In" /></Link>
+              <h5>Don't have an account? <a href="">Sign Up</a></h5>
             </form>
           </div>
         </div>

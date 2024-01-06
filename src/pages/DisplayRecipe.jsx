@@ -11,6 +11,7 @@ const DisplayRecipe = () => {
   const {image, ingredients, instructions} = useSelector((state) => state.potatis.displayRecipeData);
   const [recipe, setRecipe] = useState('');
   const [chapter, setChapter] = useState([]);
+  const [comments, setComments] = useState(null);
   const [url, setUrl] = useState([]);
 
   useEffect(() => {
@@ -24,14 +25,19 @@ const DisplayRecipe = () => {
   useEffect(() => {
     recipes.filter((recipe) => {
       if (recipe.recipeId === parseInt(recipeId, 10)) {
-        console.log(recipe.url, 'recipe.url')
+        console.log(recipe.url, 'recipe.url');
         setUrl(recipe.url);
         setRecipe(recipe);
+        if (recipe.comments !== 'Add Comment') {
+          setComments(recipe.comments);
+        }
       }
     });
   }, [recipes, dispatch]);
 
-  console.log(recipe, 'recipe')
+  function displayComments() {
+    return comments ? true : false;
+  }
 
   useEffect(() => {
     dispatch(fetchRecipeData(url));
@@ -44,8 +50,12 @@ const DisplayRecipe = () => {
       <div className="displayRecipeCard">
         <h1 className="displayRecipeh1">{recipe.title}</h1>
         <img className="displayRecipeImg" src={recipe.image} alt="" />
-        <a className="originalRecipe" href={url}>find original recipe here</a>
-        <p><strong style={{ color: '#f4496f' }}>Notes: </strong>{recipe.comments}</p>
+        <a className="originalRecipe" href={url}>Find original recipe here</a>
+        { displayComments() ? (
+            <p className = "notes"><strong>Notes: </strong>{recipe.comments}</p>
+        ) : (
+            <p style={{display: 'none'}} className="notes"><strong>Notes: </strong>{recipe.comments}</p>
+        )}
         <ul className="list">
           <h4>Ingredients</h4>
           {ingredients && ingredients.map((ingredient) => (
@@ -53,7 +63,7 @@ const DisplayRecipe = () => {
           ))}
         </ul>
         <ol className="list">
-        <h4>Instructions</h4>
+          <h4>Instructions</h4>
           {instructions && instructions.map((step) => (
             <li>{step}</li>
           ))}

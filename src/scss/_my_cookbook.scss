@@ -40,7 +40,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   justify-content: space-around;
 }
 
-.myCookbook h2 {
+.myCookbook h1 {
   font-size: $h2-font-size;
 }
 
@@ -97,7 +97,13 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 .createChapter label {
   font-size: $h3-font-size;
   font-weight: $h3-font-weight;
-  margin: 10px;
+  margin: 5px;
+}
+
+.createRecipe label {
+  font-size: $h3-font-size;
+  font-weight: $h3-font-weight;
+  margin: 5px;
 }
 
 .createChapter div {
@@ -156,6 +162,12 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
       height: 20px;
       margin-left: 10px;
       margin-top:20px;
+      transition: all 0.25s ease-out;
+      --webkit-transition: all 0.25s ease-out;
+      &:hover {
+        transform: scale(1.2);
+      }
+      
   }
 }
 

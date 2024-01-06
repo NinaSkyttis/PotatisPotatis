@@ -8,25 +8,43 @@ import logoblack from '../img/logoblack.png';
 import {Link} from 'react-router-dom';
 
 const Navbar = (props) => {
+  const [showSearch, setShowSearch] = useState(false);
+
+  const displaySearch = () => {
+    const x = document.getElementById('search');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  }
+
   return (
     <nav className="nav navbar">
       <ul>
         <li>
-          <Link to="/inspiration">inspiration</Link>
+          <Link to="/inspiration">Inspiration</Link>
         </li>
         <li>
-          <Link to="/my-cookbook">my cookbook</Link>
+          <Link to="/my-cookbook">My Cookbook</Link>
         </li>
       </ul>
       <div>
         <Link to="/homepage"><img src={logoblack} alt="Logo" /></Link>
       </div>
       <ul>
-        <li>
-          <Link to="/welcome-page">welcome page</Link>
+        {/* <li className="searchLiInput" id="search">
+          <form id="search" action="">
+            <input id="searchInput" autoComplete="off" name="searchRecipe" placeholder="Search Recipe" type="text" style={{display: 'block'}}/>
+          </form>
+        </li> */}
+        <li id="searchLiButton">
+          {/* <button id="searchButton" onClick={(displaySearch)}> */}
+            Search
+          {/* </button> */}
         </li>
         <li>
-          <Link to="/login-signup">login/signup</Link>
+          <Link to="/login-signup">Login / Signup</Link>
         </li>
       </ul>
     </nav>

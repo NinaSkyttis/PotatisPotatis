@@ -22,7 +22,7 @@ const ChapterCreator = (props) => {
   return (
     <div>
       <form onSubmit={submitChapter}>
-        <label htmlFor="new-chapter">add new chapter</label>
+        <label htmlFor="new-chapter">Add New Chapter</label>
         <input id="new-chapter" placeholder="Title" required/>
         <input className="button" type="submit" value="Add Chapter"/>
       </form>

@@ -40,26 +40,26 @@ const RecipeCreator = (props) => {
   return (
     <div className="createRecipe">
       <form onSubmit={submitRecipe}>
-        <label htmlFor="title">add new recipe</label>
+        <label htmlFor="title">Add New Recipe</label>
         <input
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="title"
+          placeholder="Title"
           required
         />
         <input
           id="image"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          placeholder="image"
+          placeholder="Image"
           required
         />
         <input
           id="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="url"
+          placeholder="Url"
           required
         />
 
@@ -70,10 +70,10 @@ const RecipeCreator = (props) => {
           onChange={handleDropdownChange}
           value={''}
           selected={chapterId}
-          placeholder="select chapter"
+          placeholder="Select Chapter"
         />
 
-        <input className="button" type="submit" value="add recipe" />
+        <input className="button" type="submit" value="Add Recipe" />
       </form>
     </div>
   );
