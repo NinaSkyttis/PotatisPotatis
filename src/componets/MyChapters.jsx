@@ -49,9 +49,6 @@ const MyChapters = (props) => {
     chapterArr.push(chapterObj[key]);
   }
 
-  useEffect(() => {
-    dispatch(fetchCookbook());
-  }, [dispatch]);
 
   const showUpdateRecipe = (recipeId) => {
     if (count % 2 === 0) {

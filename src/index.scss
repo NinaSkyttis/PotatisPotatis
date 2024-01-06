@@ -39,9 +39,9 @@ $cursor: pointer;
 
 body {
   color: $black;
-  background: $temp-background;
-  // background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
-  //   radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1600px) !important;
+  // background: $white;
+  background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
+    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1800px) !important;
   background-size: 100% 100% !important;
   background-repeat: no-repeat !important;
   display: flex !important;

@@ -146,6 +146,28 @@ export const fetchCookbook = () => async (dispatch) => {
   }
 };
 
+export const fetchRecipeData = (url) => async (dispatch) => {
+  const response = await fetch(`/api/getRecipeData/${url}`);
+  const data = await response.json();
+  console.log(data, 'data from url get request in action creator');
+  try {
+    dispatch({
+      type: types.FETCH_URL_DATA_SUCCESS,
+      payload: {
+        image: data.image,
+        ingredients: data.ingredients,
+        instructions: data.instructions,
+      },
+    });
+  } catch (error) {
+    console.log('this is the error: ', error);
+    dispatch({
+      type: types.FETCH_URL_DATA_FAILURE,
+      payload: error.message,
+    });
+  }
+}
+
 export const updateRecipesToDisplay = (chapterId, recipes) => ({
   type: types.UPDATE_RECIPES_TO_DISPLAY,
   payload: {

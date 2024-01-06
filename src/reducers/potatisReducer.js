@@ -8,7 +8,7 @@ const initialState = {
   chapters: [],
   // recipeList: [],
   recipesInChapters: [],
-  recipesToDisplay: {},
+  displayRecipeData: {},
   recipes: [],
   editingRecipeId: null,
   lastChapterId: 0,
@@ -90,13 +90,27 @@ const potatisReducer = (state = initialState, action) => {
           title: recipe.title.toLowerCase(),
           url: recipe.url,
         })),
-
       };
     case types.FETCH_COOKBOOK_FAILURE:
       return {
         ...state,
         error: action.payload,
       };
+    case types.FETCH_URL_DATA_SUCCESS:
+      return {
+        ...state,
+        displayRecipeData: {
+          image: action.payload.image,
+          ingredients: action.payload.ingredients,
+          instructions: action.payload.instructions,
+        },
+      };
+    case types.FETCH_URL_DATA_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
     case types.UPDATE_RECIPES_TO_DISPLAY:
       return {
         ...state,
