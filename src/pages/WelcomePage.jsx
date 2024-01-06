@@ -5,14 +5,11 @@ import '../scss/_welcome_page.scss';
 const Welcomepage = () => {
   return (
     <div className="welcomeBackground">
-      <div className="centerDiv">
+      {/* <div className="centerDiv">
         <section className="elevatorPitch">
-        Revolutionize your cooking experience—effortlessly
-        save, organize, and share your favorite recipes
-        for a smoother, more enjoyable culinary journey
-        tailored to you.
+          <img src="" alt="" />
         </section>
-      </div>
+      </div> */}
       <section className="TwoCol">
         <div className="leftDiv">
           <section>

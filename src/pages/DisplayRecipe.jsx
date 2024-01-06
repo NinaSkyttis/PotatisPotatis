@@ -14,6 +14,10 @@ const DisplayRecipe = () => {
   const [url, setUrl] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(fetchCookbook());
   }, [dispatch]);
 
