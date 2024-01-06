@@ -110,7 +110,7 @@ const MyChapters = (props) => {
                             edit
                           </button>
                           <button className="view">
-                            view
+                            share
                           </button>
                         </div>
                       </li>
