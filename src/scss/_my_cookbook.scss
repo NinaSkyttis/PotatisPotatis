@@ -63,6 +63,11 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   list-style: none;
 }
 
+#chaptersTitle {
+  font-weight: 600;
+  font-size: 48px;
+}
+
 .cookbookHeader {
   display: flex;
 }
@@ -139,7 +144,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   font-weight: 300;
   padding: 6px 12px 6px 7px;
   margin: 5px 0px;
-  // border: 0.5px solid gray;
+  border: 0.5px solid #a6a6a6;
   font-size: 16px;
   font-family: $primary-font;
 }

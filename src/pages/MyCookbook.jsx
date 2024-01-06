@@ -30,7 +30,7 @@ const HomePage = () => {
     <div className="myCookbook">
       <div className="cookbookFlex">
         <div className="cookbookHeader">
-          <h2>My Chapters</h2><button onClick={showCreateChapter}>+</button>
+          <h2 id="chaptersTitle">CHAPTERS</h2><button onClick={showCreateChapter}>+</button>
         </div>
         <button className="addRecipeButton" onClick={(showCreateRecipe)}>Add Recipe</button>
       </div>
