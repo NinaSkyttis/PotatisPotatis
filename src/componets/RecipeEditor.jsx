@@ -12,12 +12,14 @@ const RecipeEditor = (props) => {
   const [image, setImage] = useState('');
   const [foundRecipe, setFoundRecipe] = useState('');
   const [chapterId, setChapterId] = useState('');
+  const [comments, setComments] = useState('');
   const {chapters} = useSelector((state) => state.potatis);
   const recipes = useSelector((state) => state.potatis.recipes);
   const recipeIdToEdit = useSelector((state) => state.potatis.editingRecipeId);
   // console.log(recipe, 'recipe in updateRecipe');
   console.log(recipeIdToEdit, 'recipeIdToEdit');
 
+  
   useEffect(() => {
     const foundRecipe = recipes.find((el) => el.recipeId === recipeIdToEdit);
     if (foundRecipe) {
@@ -26,6 +28,7 @@ const RecipeEditor = (props) => {
       setImage(foundRecipe.image);
       setUrl(foundRecipe.url);
       setChapterId(foundRecipe.chapterId);
+      setComments(foundRecipe.comments);
     }
   }, [recipeIdToEdit, recipes]);
 
@@ -41,6 +44,7 @@ const RecipeEditor = (props) => {
     setImage('');
     setUrl('');
     setChapterId('');
+    setComments('')
   };
 
 
@@ -54,12 +58,13 @@ const RecipeEditor = (props) => {
     // console.log('title, url, chapterId --> ', title, url, chapterId);
     // const inputTitle = document.getElementById('title');
     // const inputUrl = document.getElementById('url');
-    await dispatch(updateRecipe(recipeIdToEdit, title, image, url, chapterId));
+    await dispatch(updateRecipe(recipeIdToEdit, title, image, url, chapterId, comments));
 
     setTitle('');
     setImage('');
     setUrl('');
     setChapterId('');
+    setComments('');
   };
 
   const handleDropdownChange = (selectedOption) => {
@@ -72,7 +77,7 @@ const RecipeEditor = (props) => {
     value: chapter._id,
     label: chapter.title,
   }));
-
+  // console.log('comments,',comments)
   return (
     <div className="editRecipe">
       <form className="editRecipe" onSubmit={updateRecipeHandler}>
@@ -98,6 +103,13 @@ const RecipeEditor = (props) => {
           placeholder="Url"
           required
         />
+        <input
+          id="comments"
+          defaultValue={comments.toLowerCase()}
+          onChange={(e) => setComments(e.target.value)}
+          placeholder="comments"
+          required
+        />
 
         {/* Dropdown for chapterId */}
         <Dropdown
@@ -106,17 +118,17 @@ const RecipeEditor = (props) => {
           onChange={handleDropdownChange}
           value={''}
           selected={chapterId}
-          placeholder="Select Chapter"
+          placeholder="select chapter"
         />
 
         <input
           className="button editButton"
           type="submit"
-          value="Update Recipe"
+          value="update recipe"
         />
         <input
           type="button editButton"
-          value="Delete Recipe"
+          value="delete recipe"
           id="deleteButton"
           onClick={() => deleteRecipeHandler()}
         />

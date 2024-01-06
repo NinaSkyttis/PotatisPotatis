@@ -6,6 +6,7 @@ import store from './store';
 import {Provider} from 'react-redux';
 import App from './App';
 import {HashRouter} from 'react-router-dom';
+// import thunk from 'redux-thunk';
 // import {HashRouter} from 'react-router-dom';
 
 // As of React 18

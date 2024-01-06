@@ -57,41 +57,43 @@ export const addRecipe = (title, image, url, chapterId) => async (dispatch) => {
   }
 };
 
-export const updateRecipe = (recipeIdToEdit, title, image, url, chapterId) =>
-  async (dispatch) => {
-    try {
-      await fetch(`/api/recipes/${recipeIdToEdit}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({title, image, url, chapterId}),
-      });
+export const updateRecipe = (recipeIdToEdit, title, image, url, chapterId, comments) =>
+  // console.log('comments in updateRecipe', comments);
+async (dispatch) => {
+  try {
+    await fetch(`/api/recipes/${recipeIdToEdit}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({title, image, url, chapterId, comments}),
+    });
 
-      const payload = {
-        recipeIdToEdit,
-        title,
-        image,
-        url,
-        chapterId,
-      };
+    const payload = {
+      recipeIdToEdit,
+      title,
+      image,
+      url,
+      chapterId,
+      comments,
+    };
 
-      await dispatch({
-        type: types.UPDATE_RECIPE_SUCCESS,
-        payload,
-      });
+    await dispatch({
+      type: types.UPDATE_RECIPE_SUCCESS,
+      payload,
+    });
 
-      dispatch(fetchCookbook());
-    } catch (error) {
-      dispatch({
-        type: types.UPDATE_RECIPE_FAILURE,
-        payload: error.message,
-      });
-    }
-  };
+    dispatch(fetchCookbook());
+  } catch (error) {
+    dispatch({
+      type: types.UPDATE_RECIPE_FAILURE,
+      payload: error.message,
+    });
+  }
+};
 
 export const deleteRecipe = (recipeToDelete) => async (dispatch) => {
-  console.log('all good for now')
+  console.log('all good for now');
   try {
     await fetch(`/api/recipes/${recipeToDelete}`, {
       method: 'DELETE',
@@ -156,7 +158,9 @@ export const fetchRecipeData = (url) => async (dispatch) => {
       payload: {
         image: data.image,
         ingredients: data.ingredients,
+        url: data.url,
         instructions: data.instructions,
+        // comments: data.comments,
       },
     });
   } catch (error) {
@@ -166,7 +170,7 @@ export const fetchRecipeData = (url) => async (dispatch) => {
       payload: error.message,
     });
   }
-}
+};
 
 export const updateRecipesToDisplay = (chapterId, recipes) => ({
   type: types.UPDATE_RECIPES_TO_DISPLAY,

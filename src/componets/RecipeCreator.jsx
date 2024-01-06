@@ -45,7 +45,7 @@ const RecipeCreator = (props) => {
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
+          placeholder="title"
           required
         />
         <input
@@ -59,7 +59,7 @@ const RecipeCreator = (props) => {
           id="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="Url"
+          placeholder="url"
           required
         />
 
@@ -70,7 +70,7 @@ const RecipeCreator = (props) => {
           onChange={handleDropdownChange}
           value={''}
           selected={chapterId}
-          placeholder="Select Chapter"
+          placeholder="select chapter"
         />
 
         <input className="button" type="submit" value="add recipe" />

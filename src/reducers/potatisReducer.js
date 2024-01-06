@@ -41,6 +41,7 @@ const potatisReducer = (state = initialState, action) => {
             image: action.payload.image,
             url: action.payload.url,
             chapterId: action.payload.chapterId,
+            comments: action.payload.comments,
           },
         ],
       };
@@ -89,6 +90,7 @@ const potatisReducer = (state = initialState, action) => {
           image: recipe.image,
           title: recipe.title.toLowerCase(),
           url: recipe.url,
+          comments: recipe.comments,
         })),
       };
     case types.FETCH_COOKBOOK_FAILURE:
@@ -103,6 +105,7 @@ const potatisReducer = (state = initialState, action) => {
           image: action.payload.image,
           ingredients: action.payload.ingredients,
           instructions: action.payload.instructions,
+          comments: action.payload.comments,
         },
       };
     case types.FETCH_URL_DATA_FAILURE: {

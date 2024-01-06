@@ -41,6 +41,7 @@ const DisplayRecipe = () => {
         <h1 className="displayRecipeh1">{recipe.title}</h1>
         <img className="displayRecipeImg" src={recipe.image} alt="" />
         <a className="originalRecipe" href={url}>find original recipe here</a>
+        <p><strong style={{ color: '#f4496f' }}>Notes: </strong>{recipe.comments}</p>
         <ul className="list">
           <h4>Ingredients</h4>
           {ingredients && ingredients.map((ingredient) => (
