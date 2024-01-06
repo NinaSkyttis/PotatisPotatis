@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchCookbook} from '../actions/actions';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
+import share from '../img/share-1.png';
+
 
 // import '.././index.scss';
 
 const DisplayChapter = () => {
+  const currentUrl = window.location.href;
   const {chapterId} = useParams();
   const dispatch = useDispatch();
   const {error, chapters, recipesInChapters, recipes} = useSelector((state) => state.potatis);
@@ -51,12 +54,21 @@ const DisplayChapter = () => {
 
   return (
     <div className="myCookbook myCookBookChapter">
-      {chapter && <h1>{chapter.title}</h1>}
+      <div className="chapterAndShare">
+        {chapter && <h1>{chapter.title}</h1>}
+        <a id="copyUrl" href=""><img src={share} /></a>
+      </div>
       <ul className="recipeListInChapter" >
         {
           finalRecipes && finalRecipes.map((recipe) => (
             <li className="recipeListInChapter" key={recipe.recipeId} >
-              <img src={recipe.image} alt="" />
+              <Link
+                style={{ width: '100%' }}
+                key={recipe.recipeId}
+                to={`/my-cookbook/chapters/${chapterId}/${recipe.recipeId}`}
+              >
+                <img src={recipe.image} alt="" />
+              </Link>
               <h4>{recipe.title}</h4>
             </li>
           ))

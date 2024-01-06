@@ -20,11 +20,14 @@ const DisplayRecipe = () => {
   useEffect(() => {
     recipes.filter((recipe) => {
       if (recipe.recipeId === parseInt(recipeId, 10)) {
+        console.log(recipe.url, 'recipe.url')
         setUrl(recipe.url);
         setRecipe(recipe);
       }
     });
   }, [recipes, dispatch]);
+
+  console.log(recipe, 'recipe')
 
   useEffect(() => {
     dispatch(fetchRecipeData(url));
@@ -35,14 +38,17 @@ const DisplayRecipe = () => {
   return (
     <div className="displayRecipe">
       <div className="displayRecipeCard">
-        <img className="displayRecipeImg" src={recipe.image} alt="" />
         <h1 className="displayRecipeh1">{recipe.title}</h1>
-        <ul>
+        <img className="displayRecipeImg" src={recipe.image} alt="" />
+        <a className="originalRecipe" href={url}>find original recipe here</a>
+        <ul className="list">
+          <h4>Ingredients</h4>
           {ingredients && ingredients.map((ingredient) => (
             <li>{ingredient}</li>
           ))}
         </ul>
-        <ol>
+        <ol className="list">
+        <h4>Instructions</h4>
           {instructions && instructions.map((step) => (
             <li>{step}</li>
           ))}

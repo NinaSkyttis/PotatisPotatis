@@ -27,9 +27,14 @@ RecipesDataController.getData = async (req, res, next) => {
         ingredients.push(list);
       });
 
-      $('ul[class*= "instructions"], ul[class*= "directions"] > li', html).each(function () {
-        const list = $(this).text();
-        instructions.push(list);
+      // $('ul[class*= "instructions"], ul[class*= "directions"] > li', html).each(function () {
+      //   const list = $(this).text();
+      //   instructions.push(list);
+      // });
+      $('ul[class*= "instructions"], ul[class*= "directions"]', html).each(function () {
+        $(this).find('li').each(function () {
+          instructions.push($(this).text());
+        });
       });
 
       const image = $('img').first().attr('src');

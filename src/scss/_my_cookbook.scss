@@ -3,9 +3,10 @@
 .myCookbook {
   display: flex;
   flex-direction: column;
-  // width: 100%;
+  width: 100%;
   margin: 25px;
   flex-wrap: wrap;
+  padding: 20px;
   overflow: hidden;
   background: $white;
   border-radius: $border-radius-login;
@@ -147,9 +148,29 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   margin-top: -8px;
 }
 
-// input .button {
-//   padding: 0px;
-// }
+.chapterAndShare {
+  display: flex;
+  align-items:center;
+  img {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      margin-top:20px;
+  }
+}
+
+.displayRecipeCard a {
+  text-align: left !important;
+  padding: 15px;
+  font-style: italic;
+  text-decoration:none;
+  color: black;
+  transition: all 0.25s ease-out;
+  &:hover {
+    transform: scale(1.02);
+    color: $peach-fuzz-dark;
+  }  
+}
 
 .chapter a {
   color: $peach-fuzz-dark;
@@ -233,6 +254,10 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 
 }
 
+.chaptersList ul {
+  padding: 0px;
+}
+
 .recipeListInChapter {
   display: flex;
   list-style: none;
@@ -240,6 +265,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   // justify-content: space-around;
   align-content: stretch;
   flex-direction: row;
+  // padding-right: 40px;
 }
 
 
@@ -258,7 +284,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     width: 300px;
     height: 500px;
-    margin: 5px;
+    margin: 10px;
     transition: all 0.25s ease-out;
     -webkit-transition: all 0.5s ease-out;
     &:hover {
@@ -341,3 +367,5 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   color: $peach-fuzz-dark;
   border: 1px solid $peach-fuzz-dark !important;
 }
+
+// displayReicpe
