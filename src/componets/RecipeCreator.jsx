@@ -73,7 +73,7 @@ const RecipeCreator = (props) => {
           placeholder="Select Chapter"
         />
 
-        <input className="button" type="submit" value="Add Recipe" />
+        <input id="createRecipeButton" className="button" type="submit" value="Add Recipe" />
       </form>
     </div>
   );

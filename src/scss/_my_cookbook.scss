@@ -27,6 +27,8 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   color: $peach-fuzz-dark;
   transition: all 0.25s ease-out;
   -webkit-transition: all 0.25s ease-out;
+  margin-top: 95px;
+  position: absolute;
   &:hover {
     // border-bottom: 1px solid black;
     color: $peach-fuzz-dark;
@@ -34,7 +36,70 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   }
 }
 
+#createRecipe {
+  position: fixed;
+  z-index: 2;
+  top: 200;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 600px;
+  input {
+    width: 100%;
+  }
+}
 
+#createRecipeButton {
+  font-weight: 400;
+}
+
+.createRecipe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(120, 120, 120, 0.56) 0px 22px 70px 4px;
+}
+
+.createRecipe form {
+  width: 80%;
+}
+
+.createRecipe input {
+  padding-left: 10px;
+  font-weight: 300;
+  padding: 12px 12px 12px 7px;
+  margin: 5px 0px;
+  border: 0.5px solid #a6a6a6;
+  // color: #a6a6a6 !important;
+  font-size: 16px;
+  font-family: $primary-font;
+}
+
+.Dropdown-control {
+padding: 12px 0px 12px 12px;
+}
+
+.createRecipe label {
+  font-size: $h3-font-size;
+  font-weight: $h3-font-weight;
+  margin: auto;
+  padding: 10px;
+}
+
+.createRecipe button {
+  width: 100% !important;
+}
+
+#recipeButtonAdd {
+  width: 100%;
+  padding: 10px;
+  font-weight: 400;
+}
 .create {
   display: flex;
   justify-content: space-around;
@@ -51,6 +116,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 
 .chapter h2 {
   padding-right: 10px;
+  font-size: 36px;
 }
 .chapter a {
   transform: all 0.25s ease-out;
@@ -61,6 +127,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 
 .chaptersList {
   list-style: none;
+  margin-top:80px;
 }
 
 #chaptersTitle {
@@ -105,11 +172,6 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   margin: 5px;
 }
 
-.createRecipe label {
-  font-size: $h3-font-size;
-  font-weight: $h3-font-weight;
-  margin: 5px;
-}
 
 .createChapter div {
   display: flex;
@@ -128,26 +190,7 @@ box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     font-family: $primary-font;
 }
 
-.createRecipe {
-  display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    width: 300px;
-    height: 300px;
-    margin: auto;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
 
-.createRecipe input {
-  padding-left: 10px;
-  font-weight: 300;
-  padding: 6px 12px 6px 7px;
-  margin: 5px 0px;
-  border: 0.5px solid #a6a6a6;
-  font-size: 16px;
-  font-family: $primary-font;
-}
 .cookbookFlex {
   display: flex;
   flex-direction: column;

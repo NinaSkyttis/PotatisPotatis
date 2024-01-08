@@ -17,20 +17,14 @@ RecipesDataController.getData = async (req, res, next) => {
   try {
     const response = await axios.get(url);
 
-    // Check if the response status is successful (2xx)
     if (response.status >= 200 && response.status < 300) {
       html = response.data;
       const $ = cheerio.load(html);
-      // $('ul:contains("tsp"):first > li', html).each(function() {
-      $('ul[class*="ingredients"] > li', html).each(function () {
+      $('ul[class*="ingredients"] > li', html).each(function() {
         const list = $(this).text();
         ingredients.push(list);
       });
 
-      // $('ul[class*= "instructions"], ul[class*= "directions"] > li', html).each(function () {
-      //   const list = $(this).text();
-      //   instructions.push(list);
-      // });
       $('ul[class*= "instructions"], ul[class*= "directions"]', html).each(function () {
         $(this).find('li').each(function () {
           instructions.push($(this).text());
