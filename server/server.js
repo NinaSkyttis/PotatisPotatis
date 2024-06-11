@@ -1,15 +1,44 @@
-/* eslint-disable max-len */
-// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const path = require('path');
 const PORT = process.env.PORT || 3000;
+const cors = require('cors');
 require('dotenv').config();
+// const chaptersController = require('./controllers/ChaptersController');
 
 const {Pool} = require('pg');
-
+// eslint-disable-next-line no-unused-vars
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+});
+
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
+// Importing routes
+const chaptersRouter = require('./routes/chapters');
+const recipesRouter = require('./routes/recipes');
+const recipesDataRouter = require('./routes/getRecipeData');
+
+app.use('/api/chapters', chaptersRouter);
+app.use('/api/recipes', recipesRouter);
+app.use('/api/getRecipeData', recipesDataRouter);
+
+app.use(express.static('dist'));
+
+app.get('*', (req, res) => {
+  console.log('Requested URL:', req.url);
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 // Access the value of NODE_ENV
@@ -21,33 +50,3 @@ if (environment === 'production') {
 } else {
   console.log('Running in development mode');
 }
-
-const cors = require('cors');
-const collectionsController = require('./controllers/CollectionsController');
-app.use(cors());
-
-// Middleware
-app.use(bodyParser.json());
-
-// Example endpoint
-app.get('/api/data', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM public.recipe');
-    console.log(result.rows, '<--- this is the result');
-    res.status(200).json(result.rows);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({error: 'Internal Server Error'});
-  }
-});
-
-app.post('/api/addChapter', collectionsController.addCollection, (req, res) => {
-  res.status(200).json(result.rows);
-  // handle error here
-});
-
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});

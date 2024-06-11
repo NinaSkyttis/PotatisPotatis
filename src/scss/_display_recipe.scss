@@ -1,0 +1,47 @@
+@import '../index.scss';
+
+.displayRecipeImg {
+  width: 600px;
+}
+
+.displayRecipeCard {
+  display:flex;
+  flex-direction: column;
+  background: $white;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding: 50px;
+  h4 {
+    font-size: $h2-font-size;
+    margin: 20px 0px;
+
+  }
+}
+
+
+.displayRecipeh1 {
+  padding: none;
+  margin: 20px 0px;
+  font-size: $h1-font-size;
+  width: 600px;
+}
+
+.list {
+  width: 600px;
+  li {
+    font-size: $h4-font-size;
+    padding: 5px;
+  }
+}
+
+.originalRecipe a {
+  text-align: left  !important;
+}
+
+
+.notes {
+  width: 80%;
+  background-color: $peach-fuzz;
+  padding: 10px;
+}

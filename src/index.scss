@@ -1,26 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1;0,100;0,200;0,300;0,400;0,600;0,700;1,1;1,100;1,200;1,300;1,400&display=swap');
+
 
 $black: #000;
-$white: #FCFAF6;
+$white: #FFF;
 $peach-fuzz: #F3CFB4;
 $peach-fuzz-medium: #E2AE89;
 $peach-fuzz-dark: #B35A41;
-$background: #F5F4F6;
+$peach-fuzz-half-transparent: #f3cfb461;
+$background: #fbfbfb;
+$temp-background: #f3cfb46e;
 $christmas-red: #D93000;
-$background-gradient: conic-gradient(from 221deg at 50% 50%, rgba(226, 174, 137, 0.68) 68.888418674469deg, rgba(243, 207, 180, 0.44) 202.94589042663574deg, rgba(179, 90, 65, 0.29) 359.83569860458374deg);
+$background-gradient: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
+    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 400px);
 $primary-font: 'Josefin Sans', sans-serif;
 $primary-weight: 300;
+$h1-font-size: 48px;
+$h2-font-size: 36px;
+$h3-font-size: 22px;
+$h3-font-weight: 400;
+$h4-font-size: 24px;
+$h5-font-size: 18px;
+$button-font-size: 16px;
+$div-padding: 20px;
+$border-radius: 0px;
+$border-radius-login: 8px;
+$bos-shadow-div: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;;
+$left-div-padding: 30px;
+$button-border-radius: 0px;
+$button-padding: 15px 20px;
+$padding-between: 25px 0px;
+$input-padding: 10px 20px;
+$input-box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+$cursor: pointer;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   color: $black;
-  background: $background;
-  display: flex;
+  // background: $white;
+  background: radial-gradient(farthest-side at bottom left, #f3cfb4, transparent),
+    radial-gradient(farthest-corner at bottom right, #e2ae89, transparent 1800px) !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   font-family: $primary-font;
   font-weight: $primary-weight;
-  height: 100vh;
+  // height: 100vh;
+  width: 100%;
   margin: 0px;
 }
 
@@ -30,11 +63,91 @@ form {
   width: 200px;
 }
 
-button {
-  padding: 15px 20px;
-  background: $peach-fuzz;
+.button {
+  padding: $button-padding;
+  background: $peach-fuzz-dark;
   border: none;
-  border-radius: 6px;
+  border-radius: $border-radius;
   width: 200px;
+  font-family: $primary-font;
+  font-size: 16px;
+  color: $white;
+  cursor: $cursor;
+  transition: all 0.25s ease-out;
+  -webkit-transition: all 0.25s ease-out;
+    &:hover {
+      // border-bottom: 1px solid black;
+      transform: scale(1.02);
+    }
+}
+
+.transition {
+      -webkit-transition: all 1s ease-out;
+      transition: all 1s ease-out;
+    
+      &:hover {
+        // background-color: $peach-fuzz-medium;
+        // transition: background-color 0.5s ease-in;
+        // letter-spacing: 0.02em;
+        transform: scale(1.02);
+      }
+    
+      &:focus {
+        background-color: $peach-fuzz;
+      }
+}
+
+.borderButton {
+  border: 1px solid black;
+  background: transparent;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+}
+
+.goBackLink {
+  display: flex;
+  justify-content: flex-start;
+  padding: 15px;
+  margin: 15px;
+  height: 10px;
+  text-decoration: none;
+  color: $black;
+  cursor: $cursor;
+}
+
+.goBackLink:hover {
+  color: $peach-fuzz-dark;
+}
+
+.arrow {
+    border: solid;
+    border-width: 0px 0px 2px 2px;
+    display: inline-block;
+    padding: 3px;
+    height: 5px;
+    transform: rotate(45deg);
+    margin-top: 2px;
+    margin-right: 2px;
+}
+
+.centerDiv {
+  display: flex;
+  justify-content: center;
+  // background: $white;
+  padding: $div-padding;
+  border-radius: $border-radius;
+  // box-shadow: $bos-shadow-div;
+}
+
+.leftDiv {
+  display: flex;
+  flex-direction: column;
+  padding: $left-div-padding;
+  justify-content: center;
+}
+
+h1 {
+  margin-top: 50px;
+  margin-left: 50px;
 }
 

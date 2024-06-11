@@ -1,0 +1,96 @@
+@import '../index.scss';
+
+
+.nav li {
+  transition: all 0.25s ease-out;
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+.loginSignupStyle {
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  font-family: $primary-font;
+  background-color: blue;
+  height: 100vh;
+  width: 100vw;
+  background: $background-gradient !important;
+}
+
+.backgroundStyle {
+  position: absolute;
+  background: $peach-fuzz-medium;
+  width: 800px;
+  height: 580px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 5px;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: flex-start;
+  // padding: 15px 30px;
+  box-shadow: $bos-shadow-div;
+  border-radius: $border-radius-login;
+}
+
+.backgroundStyle h1 {
+  font-size: $h2-font-size;
+  width: 300px;
+  color: $white;
+      // padding: 15px 0px 0px 30px;
+}
+
+.loginSignupForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  position: relative;
+  top: -20px;
+  right: -6px;
+  width: 700px;
+  height: 615px;
+  z-index: 2;
+  box-shadow: $bos-shadow-div;
+  border-radius: $border-radius-login;
+}
+
+.loginSignupForm img {
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+.loginSignupForm form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginSignupForm input {
+  padding: $input-padding;
+  width: 400px;
+  border: none;
+  margin: 15px;
+  box-shadow: $input-box-shadow;
+  font-style: $primary-font;
+  font-family: $primary-font;
+  font-weight: 300;
+  border: 0.5px solid #a6a6a6;
+  font-size: 16px;
+}
+
+.loginSignupForm a {
+  color: $peach-fuzz-dark;
+  text-decoration: none;
+}
+
+.formButton {
+  background: $peach-fuzz-dark;
+  color: $white;
+  border-radius: $button-border-radius;
+  font-family: $primary-font;
+  font-weight: bold !important;
+}
